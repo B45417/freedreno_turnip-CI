@@ -35,4 +35,4 @@ jobs:
         tag_name: github_run
         name: Weekly Action Release
         files: |
-           turnip_workdir/Turnip_"$(date +'%b-%d-%Y')".zip
+           turnip_workdir/turnip_adrenotools.zip
