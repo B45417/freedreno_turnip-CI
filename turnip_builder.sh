@@ -120,8 +120,7 @@ EOF
 			-Dvulkan-drivers=freedreno \
 			-Dvulkan-beta=true \
 			-Dfreedreno-kmds=kgsl \
-			-Db_lto=true \
-			-Dstrip=true &> "$workdir/meson_log"
+			-Db_lto=true &> "$workdir/meson_log"
 
 	echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir/ninja_log"
@@ -199,8 +198,8 @@ port_lib_for_adrenotools(){
 		cat <<EOF > "meta.json"
 {
 	"schemaVersion": 1,
-	"name": "freedreno_turnip-CI",
-	"description": "$(date)",
+	"name": "Turnip - $(date)",
+	"description": "Compiled from Mesa-main branch",
 	"author": "MrMiy4mo, kethen",
 	"packageVersion": "1",
 	"vendor": "Mesa",
