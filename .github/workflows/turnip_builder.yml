@@ -31,6 +31,9 @@ jobs:
           turnip_workdir/ninja_log
           turnip_workdir/mesa-main/build-android-aarch64/meson-logs/meson-log.txt
 
+    - name: Rename file 
+      run: mv turnip_workdir/turnip_adreno.zip turnip_workdir/turnip_${{ steps.date.outputs.today }}.zip
+
     - name: Release "turnip"
       uses: softprops/action-gh-release@v1
       with:
@@ -38,4 +41,4 @@ jobs:
         tag_name: github_run
         name: Weekly Action Release
         files: |
-           turnip_workdir/Turnip_${{ steps.date.outputs.today }}.zip
+           turnip_workdir/turnip_${{ steps.date.outputs.today }}.zip
