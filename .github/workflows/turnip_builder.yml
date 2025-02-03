@@ -30,8 +30,7 @@ jobs:
 
      - id: versions
       name: "Get release info"
-      run: |
-        echo "filename=$(cat turnip_workdir/filename)" >> "$GITHUB_OUTPUT"
+      run: echo "filename=$(cat turnip_workdir/filename)" >> "$GITHUB_OUTPUT"
 
     - name: Release "turnip"
       uses: softprops/action-gh-release@v1
