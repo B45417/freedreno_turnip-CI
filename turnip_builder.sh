@@ -57,6 +57,11 @@ prepare_workdir(){
 	echo "Exracting mesa source ..." $'\n'
 		unzip mesa-main.zip &> /dev/null
 		cd mesa-main
+                version=$(awk -F'COMPLETE VK_MAKE_API_VERSION(|)' '{print $2}' <<< $(cat include/vulkan/vulkan_core.h) | xargs)
+		major=$(echo $version | cut -d "," -f 2 | xargs)
+		minor=$(echo $version | cut -d "," -f 3 | xargs)
+		patch=$(awk -F'VK_HEADER_VERSION |\n#define' '{print $2}' <<< $(cat include/vulkan/vulkan_core.h) | xargs)
+		vulkan_version="$major.$minor.$patch"
 }
 
 
@@ -129,7 +134,7 @@ port_lib_for_adrenotools(){
 	"author": "MrMiy4mo, kethen",
 	"packageVersion": "1",
 	"vendor": "Mesa",
-	"driverVersion": "$(cat $workdir/mesa-main/VERSION)",
+	"driverVersion": "$(cat $workdir/mesa-main/VERSION)/vk$vulkan_version",
 	"minApi": $sdkver,
 	"libraryName": "$libname"
 }
