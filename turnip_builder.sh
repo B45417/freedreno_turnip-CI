@@ -114,11 +114,12 @@ EOF
 }
 
 port_lib_for_adrenotools(){
-	libname=vulkan.freedreno.so
+	libname=vulkan.adreno.so
 	echo "Using patchelf to match soname" $'\n'
-		cp "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"/$libname
+		cp "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
 		cd "$workdir"
-		patchelf --set-soname $libname $libname
+		patchelf --set-soname $libname libvulkan_freedreno.so
+                mv libvulkan_freedreno.so $libname
 	echo "Preparing meta.json" $'\n'
 		cat <<EOF > "meta.json"
 {
@@ -134,10 +135,12 @@ port_lib_for_adrenotools(){
 }
 EOF
 
-	zip -9 "$workdir"/turnip_adrenotools.zip $libname meta.json &> /dev/null
-	if ! [ -a "$workdir"/turnip_adrenotools.zip ];
-		then echo -e "$red-Packing turnip_adrenotools.zip failed!$nocolor" && exit 1
-		else echo -e "$green-All done, the module saved to;$nocolor" && echo "$workdir"/turnip_adrenotools.zip
+        filename=Turnip_"$(date +'%b-%d-%Y')"
+	echo  $filename > filename
+	zip -9 "$workdir"/$filename.zip $libname meta.json &> /dev/null
+	if ! [ -a "$workdir"/$filename.zip ];
+		then echo -e "$red-Packing failed!$nocolor" && exit 1
+		else echo -e "$green-All done"
 	fi
 }
 
