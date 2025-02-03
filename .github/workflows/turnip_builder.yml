@@ -11,6 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Date
+      run: echo "today=$(date +'%d-%m-%Y')" >> "$GITHUB_OUTPUT"
+
     - name: Prepare environment
       run: |
         sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
@@ -35,4 +38,4 @@ jobs:
         tag_name: github_run
         name: Weekly Action Release
         files: |
-           turnip_workdir/Turnip_"$(date +'%d-%m-%Y')".zip
+           turnip_workdir/Turnip_${{ steps.date.outputs.today }}.zip
