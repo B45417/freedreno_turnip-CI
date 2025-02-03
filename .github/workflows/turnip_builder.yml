@@ -11,7 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Date
+    - name: Get date
+      id: date
       run: echo "today=$(date +'%d-%m-%Y')" >> "$GITHUB_OUTPUT"
 
     - name: Prepare environment
