@@ -28,6 +28,11 @@ jobs:
           turnip_workdir/ninja_log
           turnip_workdir/mesa-main/build-android-aarch64/meson-logs/meson-log.txt
 
+     - id: versions
+      name: "Get release info"
+      run: |
+        echo "filename=$(cat turnip_workdir/filename)" >> "$GITHUB_OUTPUT"
+
     - name: Release "turnip"
       uses: softprops/action-gh-release@v1
       with:
@@ -35,4 +40,4 @@ jobs:
         tag_name: github_run
         name: Weekly Action Release
         files: |
-           turnip_workdir/turnip_adrenotools.zip
+           turnip_workdir/${{ steps.versions.outputs.filename }}.zip
