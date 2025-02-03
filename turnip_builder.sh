@@ -134,7 +134,7 @@ port_lib_for_adrenotools(){
 	"libraryName": "$libname"
 }
 EOF
-        filename=Turnip_"$(date +'%d-%m-%Y')"
+        filename=turnip_adreno
 	zip -9 "$workdir"/$filename.zip $libname meta.json &> /dev/null
 	if ! [ -a "$workdir"/$filename.zip ];
 		then echo -e "$red-Packing failed!$nocolor" && exit 1
