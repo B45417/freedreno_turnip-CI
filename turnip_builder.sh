@@ -124,7 +124,7 @@ port_lib_for_adrenotools(){
 		cat <<EOF > "meta.json"
 {
 	"schemaVersion": 1,
-	"name": "Turnip - $(date)",
+	"name": Turnip_"$(date +'%d-%m-%Y')",
 	"description": "Compiled from Mesa-main branch",
 	"author": "MrMiy4mo, kethen",
 	"packageVersion": "1",
@@ -134,10 +134,9 @@ port_lib_for_adrenotools(){
 	"libraryName": "$libname"
 }
 EOF
-
-	echo  $filename > filename
-	zip -9 "$workdir"/turnip_adrenotools.zip $libname meta.json &> /dev/null
-	if ! [ -a "$workdir"/turnip_adrenotools.zip ];
+        filename=Turnip_"$(date +'%d-%m-%Y')"
+	zip -9 "$workdir"/$filename.zip $libname meta.json &> /dev/null
+	if ! [ -a "$workdir"/$filename.zip ];
 		then echo -e "$red-Packing failed!$nocolor" && exit 1
 		else echo -e "$green-All done"
 	fi
