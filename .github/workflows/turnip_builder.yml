@@ -13,7 +13,7 @@ jobs:
 
     - name: Get date
       id: date
-      run: echo "today=$(date +'%d-%m-%Y')" >> "$GITHUB_OUTPUT"
+      run: echo "today=$(date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
 
     - name: Prepare environment
       run: |
