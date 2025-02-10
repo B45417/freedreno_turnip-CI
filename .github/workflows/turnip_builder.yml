@@ -37,6 +37,6 @@ jobs:
       with:
         body: Turnip driver package for adrenotools
         tag_name: github_run
-        name: Weekly Action Release
+        name: Releases
         files: |
            turnip_workdir/turnip_${{ steps.date.outputs.today }}.zip
