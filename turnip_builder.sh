@@ -100,15 +100,12 @@ EOF
 
 		meson setup build-android-aarch64 \
 			--cross-file "android-aarch64.txt" \
-			-Dbuildtype=release \
 			-Dplatforms=android \
 			-Dplatform-sdk-version="$sdkver" \
 			-Dandroid-stub=true \
 			-Dgallium-drivers= \
 			-Dvulkan-drivers=freedreno \
-			-Dvulkan-beta=true \
-			-Dfreedreno-kmds=kgsl \
-			-Db_lto=true &> "$workdir/meson_log"
+			-Dfreedreno-kmds=kgsl &> "$workdir/meson_log"
 
 	echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir/ninja_log"
