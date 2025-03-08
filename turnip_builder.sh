@@ -104,8 +104,7 @@ EOF
 			-Dplatform-sdk-version="$sdkver" \
 			-Dandroid-stub=true \
 			-Dgallium-drivers= \
-			-Dvulkan-drivers=freedreno \
-			-Dfreedreno-kmds=kgsl &> "$workdir/meson_log"
+			-Dvulkan-drivers=freedreno &> "$workdir/meson_log"
 
 	echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir/ninja_log"
@@ -139,7 +138,7 @@ EOF
         filename=turnip_"$(date +'%Y-%m-%d')"
 	zip -9 "$workdir"/$filename.zip $libname meta.json &> /dev/null
 	if ! [ -a "$workdir"/$filename.zip ];
-		then echo -e "$red-Packing failed!$nocolor" && exit 1
+		then echo -e "$red-Packing failed!$nocolor" && exit 2
 		else echo -e "$green-All done"
 	fi
 }
