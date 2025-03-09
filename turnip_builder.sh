@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-sudo apt-get build-dep mesa
+sudo apt-get install libdrm-dev
 
 #Define variables
 green='\033[0;32m'
