@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-rm -r *
-
 #Define variables
 green='\033[0;32m'
 red='\033[0;31m'
@@ -107,7 +105,7 @@ EOF
 			-Dplatform-sdk-version="$sdkver" \
 			-Dandroid-stub=true \
 			-Dgallium-drivers= \
-			-Dvulkan-drivers=freedreno 
+			-Dvulkan-drivers=freedreno \
                         -Dvulkan-beta=true \
 			-Dfreedreno-kmds=kgsl \
 			-Db_lto=true &> "$workdir/meson_log"
