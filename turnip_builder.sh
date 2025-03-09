@@ -23,6 +23,7 @@ run_all(){
 }
 
 check_deps(){
+        apt-get build-dep mesa
 	echo "Checking system for required Dependencies ..."
 		for deps_chk in $deps;
 			do
