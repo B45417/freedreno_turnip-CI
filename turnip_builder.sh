@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+export LIBDRM_CFLAGS="-I${LIBDRM_ROOT} -I${LIBDRM_ROOT}/libdrm"
+export LIBDRM_LIBS="-L${LIBDRM_ROOT}/lib -ldrm"
+
 #Define variables
 green='\033[0;32m'
 red='\033[0;31m'
