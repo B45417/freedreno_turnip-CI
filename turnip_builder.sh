@@ -111,7 +111,7 @@ EOF
 			-Db_lto=true &> "$workdir/meson_log"
 
 	echo "Compiling build files ..." $'\n'
-		meson compile -C build-android-aarch64 &> "$workdir/meson_log2"
+		ninja -C build-android-aarch64 &> "$workdir/ninja_log"
 
 	if ! [ -a "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so ]; then
 		echo -e "$red Build failed! $nocolor" && exit 1
