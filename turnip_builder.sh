@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
-export LIBDRM_CFLAGS="-I${LIBDRM_ROOT} -I${LIBDRM_ROOT}/libdrm"
-export LIBDRM_LIBS="-L${LIBDRM_ROOT}/lib -ldrm"
+apt-get install libdrm-dev
 
 #Define variables
 green='\033[0;32m'
