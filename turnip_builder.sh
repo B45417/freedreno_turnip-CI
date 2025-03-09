@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+rm -r *
+
 #Define variables
 green='\033[0;32m'
 red='\033[0;31m'
