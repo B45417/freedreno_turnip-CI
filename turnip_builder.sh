@@ -85,7 +85,7 @@ build_lib_for_android(){
 [binaries]
 ar = '$ndk/llvm-ar'
 c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
+cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/aarch64-linux-android-strip'
@@ -111,7 +111,7 @@ EOF
 			-Db_lto=true &> "$workdir/meson_log"
 
 	echo "Compiling build files ..." $'\n'
-		ninja -C build-android-aarch64 &> "$workdir/ninja_log"
+		meson compile -C build-android-aarch64 &> "$workdir/meson_log2"
 
 	if ! [ -a "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so ]; then
 		echo -e "$red Build failed! $nocolor" && exit 1
@@ -142,7 +142,7 @@ EOF
         filename=turnip_"$(date +'%Y-%m-%d')"
 	zip -9 "$workdir"/$filename.zip $libname meta.json &> /dev/null
 	if ! [ -a "$workdir"/$filename.zip ];
-		then echo -e "$red-Packing failed!$nocolor" && exit 2
+		then echo -e "$red-Packing failed!$nocolor" && exit 1
 		else echo -e "$green-All done"
 	fi
 }
