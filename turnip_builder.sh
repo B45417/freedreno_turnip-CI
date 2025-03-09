@@ -23,7 +23,6 @@ run_all(){
 }
 
 check_deps(){
-        apt-get build-dep mesa
 	echo "Checking system for required Dependencies ..."
 		for deps_chk in $deps;
 			do
@@ -90,7 +89,6 @@ cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions',
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/aarch64-linux-android-strip'
-pkg-config = ['env', 'PKG_CONFIG_LIBDIR=$ndk/pkg-config', '/usr/bin/pkg-config']
 
 [host_machine]
 system = 'android'
@@ -109,8 +107,7 @@ EOF
 			-Dvulkan-drivers=freedreno 
                         -Dvulkan-beta=true \
 			-Dfreedreno-kmds=kgsl \
-			-Db_lto=true \
-			-Dstrip=true &> "$workdir/meson_log"
+			-Db_lto=true &> "$workdir/meson_log"
 
 	echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir/ninja_log"
