@@ -7,9 +7,9 @@ on:
 
 jobs:
   start_building_turnip:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Get date
       id: date
