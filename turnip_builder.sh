@@ -10,6 +10,8 @@ ndkver="android-ndk-r28"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="30"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa/-/archive/main/mesa-main.zip"
+libname="vulkan.adreno.so"
+filename="turnip_$(date +'%Y-%m-%d')"
 
 clear
 
@@ -86,8 +88,8 @@ build_lib_for_android(){
 ar = '$ndk/llvm-ar'
 c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
 cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
-c_ld = '$ndk/lld'
-cpp_ld = '$ndk/lld'
+c_ld = '$ndk/ld.lld'
+cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/aarch64-linux-android-strip'
 pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=$ndk/pkgconfig', '/usr/bin/pkg-config']
 
@@ -119,7 +121,6 @@ EOF
 }
 
 port_lib_for_adrenotools(){
-	libname=vulkan.adreno.so
 	echo "Using patchelf to match soname" $'\n'
 		cp "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
 		cd "$workdir"
@@ -136,10 +137,9 @@ port_lib_for_adrenotools(){
 	"vendor": "Mesa",
 	"driverVersion": "$(cat $workdir/mesa-main/VERSION)/vk$vulkan_version",
 	"minApi": $sdkver,
-	"libraryName": "$libname"
+	"libraryName": $libname
 }
 EOF
-        filename=turnip_"$(date +'%Y-%m-%d')"
 	zip -9 "$workdir"/$filename.zip $libname meta.json &> /dev/null
 	if ! [ -a "$workdir"/$filename.zip ];
 		then echo -e "$red-Packing failed!$nocolor" && exit 1
