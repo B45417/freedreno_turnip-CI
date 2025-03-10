@@ -85,9 +85,9 @@ build_lib_for_android(){
 [binaries]
 ar = '$ndk/llvm-ar'
 c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
-c_ld = '$ndk/ld.lld'
-cpp_ld = '$ndk/ld.lld'
+cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
+c_ld = '$ndk/lld'
+cpp_ld = '$ndk/lld'
 strip = '$ndk/aarch64-linux-android-strip'
 pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=$ndk/pkgconfig', '/usr/bin/pkg-config']
 
