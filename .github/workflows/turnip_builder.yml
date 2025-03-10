@@ -7,7 +7,7 @@ on:
 
 jobs:
   start_building_turnip:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
 
