@@ -190,8 +190,6 @@ EOF
      		-Dplatform-sdk-version=$sdkver \
        		-Dandroid-stub=true \
 	 	-Degl=disabled \
-       		-Dgles1=disabled \
-      	  	-Dgles2=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
   	 	-Dvulkan-beta=true \
