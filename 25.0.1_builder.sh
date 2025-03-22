@@ -10,6 +10,7 @@ ndkver="android-ndk-r28"
 sdkver="30"
 mesasrc="https://archive.mesa3d.org/mesa-25.0.1.tar.xz"
 mesadir="mesa-25.0.1"
+mesaver="25.0.1"
 
 #array of string => commit/branch;patch args
 base_patches=(
@@ -224,8 +225,8 @@ port_lib_for_adrenotool(){
 	cat <<EOF >"meta.json"
 {
   "schemaVersion": 1,
-  "name": "Turnip - 25.0.1$suffix",
-  "description": "Compiled from Mesa 25.0.1 stable",
+  "name": "Turnip - $mesaver$suffix",
+  "description": "Compiled from Mesa $mesaver stable",
   "author": "mesa",
   "packageVersion": "1",
   "vendor": "Mesa",
@@ -235,7 +236,7 @@ port_lib_for_adrenotool(){
 }
 EOF
 
-	filename=Turnip_25.0.1
+	filename=Turnip_$mesaver
 	echo "Copy necessary files from work directory ..." $'\n'
 	cp "$workdir"/vulkan.adreno.so "$packagedir"
 
