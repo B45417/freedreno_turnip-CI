@@ -8,9 +8,9 @@ workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r28"
 sdkver="30"
-mesasrc="https://archive.mesa3d.org/mesa-25.0.1.tar.xz"
-mesadir="mesa-25.0.1"
-mesaver="25.0.1"
+mesasrc="https://archive.mesa3d.org/mesa-24.3.4.tar.xz"
+mesadir="mesa-24.3.4"
+mesaver="24.3.4"
 
 #array of string => commit/branch;patch args
 base_patches=(
