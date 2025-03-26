@@ -125,6 +125,13 @@ prepare_workdir(){
 		else 
 			apply_patches ${experimental_patches[@]}
 		fi
+
+                mesa_version=$(cat VERSION | xargs)
+		version=$(awk -F'COMPLETE VK_MAKE_API_VERSION(|\n#define)' '{print $2}' <<< $(cat include/vulkan/vulkan_core.h) | xargs)
+		major=$(echo $version | cut -d "," -f 2 | xargs)
+		minor=$(echo $version | cut -d "," -f 3 | xargs)
+		patch=$(awk -F'VK_HEADER_VERSION |\n#define' '{print $2}' <<< $(cat include/vulkan/vulkan_core.h) | xargs)
+		vulkan_version="$major.$minor.$patch"	
 		
 	fi
 }
@@ -203,6 +210,7 @@ EOF
 		-Dplatform-sdk-version=$sdkver \
 		-Dandroid-stub=true \
 		-Dvulkan-drivers=freedreno \
+                -Dvulkan-beta=true \
                 -Dgallium-drivers= \
 		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
