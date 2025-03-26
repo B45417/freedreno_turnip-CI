@@ -18,12 +18,10 @@ base_patches=(
         "images_gmem_fixes;merge_requests/33514;"
 	"bin_merging_fixes;merge_requests/33534;"
         "bypass_empty_fs;merge_requests/33735;"
-	"update_309;merge_requests/33930;"
 	"bc4_5_fast;merge_requests/33945;"
         "fragment_size_fix;merge_requests/33991;"
 	"layer_count_fix;merge_requests/34080;"
 	"gmem_fix;merge_requests/34082;"
-        "update_311;merge_requests/34106;"
 )
 experimental_patches=(
         'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
@@ -125,13 +123,6 @@ prepare_workdir(){
 		else 
 			apply_patches ${experimental_patches[@]}
 		fi
-
-                mesa_version=$(cat VERSION | xargs)
-		version=$(awk -F'COMPLETE VK_MAKE_API_VERSION(|\n#define)' '{print $2}' <<< $(cat include/vulkan/vulkan_core.h) | xargs)
-		major=$(echo $version | cut -d "," -f 2 | xargs)
-		minor=$(echo $version | cut -d "," -f 3 | xargs)
-		patch=$(awk -F'VK_HEADER_VERSION |\n#define' '{print $2}' <<< $(cat include/vulkan/vulkan_core.h) | xargs)
-		vulkan_version="$major.$minor.$patch"	
 		
 	fi
 }
