@@ -15,8 +15,8 @@ mesaver="25.0.2"
 #array of string => commit/branch;patch args
 base_patches=(
 	'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
-        "bypass_empty_fs;merge_request/33735;"
-	"bc4_5_fast;merge_request/33945;"
+        "bypass_empty_fs;merge_requests/33735;"
+	"bc4_5_fast;merge_requests/33945;"
         "fragment_size_fix;merge_requests/33991;"
 	"layer_count_fix;merge_requests/34080;"
 	"gmem_fix;merge_requests/34082;"
