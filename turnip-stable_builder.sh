@@ -22,6 +22,7 @@ base_patches=(
         "fragment_size_fix;merge_requests/33991;"
 	"layer_count_fix;merge_requests/34080;"
 	"gmem_fix;merge_requests/34082;"
+        "more_bin_merging_fixes;merge_requests/34196;"
 )
 experimental_patches=(
         'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
