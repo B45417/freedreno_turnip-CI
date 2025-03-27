@@ -14,19 +14,17 @@ mesaver="25.0.2"
 
 #array of string => commit/branch;patch args
 base_patches=(
-        "bin_merging;merge_requests/33230;"
         "images_gmem_fixes;merge_requests/33514;"
-	"bin_merging_fixes;merge_requests/33534;"
-        "bypass_empty_fs;merge_requests/33735;"
 	"bc4_5_fast;merge_requests/33945;"
         "fragment_size_fix;merge_requests/33991;"
 	"layer_count_fix;merge_requests/34080;"
 	"gmem_fix;merge_requests/34082;"
-        "more_bin_merging_fixes;merge_requests/34196;"
 )
 experimental_patches=(
-        'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
-	#"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
+        "bin_merging;merge_requests/33230;"
+        "bin_merging_fixes;merge_requests/33534;"
+	"bypass_empty_fs;merge_requests/33735;"
+	"more_bin_merging_fixes;merge_requests/34196;"
 )
 failed_patches=()
 commit=""
