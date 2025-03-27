@@ -15,10 +15,12 @@ mesaver="25.0.2"
 #array of string => commit/branch;patch args
 base_patches=(
         "images_gmem_fixes;merge_requests/33514;"
+	"lrz_improvements;merge_requests/33851;"
 	"bc4_5_fast;merge_requests/33945;"
         "fragment_size_fix;merge_requests/33991;"
 	"layer_count_fix;merge_requests/34080;"
 	"gmem_fix;merge_requests/34082;"
+        "lrz_gmem_fix;merge_requests/34238;"
 )
 experimental_patches=(
         "bin_merging;merge_requests/33230;"
