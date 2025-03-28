@@ -22,12 +22,23 @@ base_patches=(
 	"gmem_fix;merge_requests/34082;"
         "logic_operation_fix;merge_requests/34212;"
         "lrz_gmem_fix;merge_requests/34238;"
+	"nir1;merge_requests/33647;"
+        "nir2;merge_requests/33722;"
+	"ir3_1;merge_requests/33647;"
+        "ir3_2;merge_requests/33184;"
+	"ir3_3;merge_requests/32366;"
+        "ir3_4;merge_requests/33701;"
+	"ir3_5;merge_requests/33791;"
+        "ir3_6;merge_requests/33810;"
+	"ir3_7;merge_requests/33816;"
+        "ir3_8;merge_requests/34055;"
 )
 experimental_patches=(
         "bin_merging;merge_requests/33230;"
         "bin_merging_fixes;merge_requests/33534;"
 	"bypass_empty_fs;merge_requests/33735;"
 	"more_bin_merging_fixes;merge_requests/34196;"
+        "ir3_9;merge_requests/33183;"
 )
 failed_patches=()
 commit=""
