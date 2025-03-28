@@ -20,6 +20,7 @@ base_patches=(
         "fragment_size_fix;merge_requests/33991;"
 	"layer_count_fix;merge_requests/34080;"
 	"gmem_fix;merge_requests/34082;"
+        "logic_operation_fix;merge_requests/34212;"
         "lrz_gmem_fix;merge_requests/34238;"
 )
 experimental_patches=(
@@ -206,7 +207,8 @@ EOF
                 -Dvulkan-beta=true \
                 -Dgallium-drivers= \
 		-Dfreedreno-kmds=kgsl \
-		-Db_lto=true &> "$workdir"/meson_log
+		-Db_lto=true \
+                -Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
