@@ -36,9 +36,9 @@ base_patches=(
 experimental_patches=(
         "bin_merging;merge_requests/33230;"
         "bin_merging_fixes;merge_requests/33534;"
-	"bypass_empty_fs;merge_requests/33735;"
 	"more_bin_merging_fixes;merge_requests/34196;"
         "ir3_9;merge_requests/33183;"
+	#"bypass_empty_fs;merge_requests/33735;"
 )
 failed_patches=()
 commit=""
