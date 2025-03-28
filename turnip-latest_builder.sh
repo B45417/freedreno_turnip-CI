@@ -12,13 +12,10 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
 base_patches=(
- 	"fragment_size_fix;merge_requests/33991;"
-	"layer_count_fix;merge_requests/34080;"
-	"layered_gmem;merge_requests/34082;"
+ 	'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-        'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
-	#"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
+        "force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
 commit=""
@@ -177,6 +174,7 @@ c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
 cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
+strip = '$ndk/llvm-strip'
 [host_machine]
 system = 'android'
 cpu_family = 'aarch64'
@@ -193,7 +191,9 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
   	 	-Dvulkan-beta=true \
-  		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
+  		-Dfreedreno-kmds=kgsl \
+                -Db_lto=true \
+		-Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
