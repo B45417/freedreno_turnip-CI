@@ -34,11 +34,11 @@ base_patches=(
         "ir3_8;merge_requests/34055;"
 )
 experimental_patches=(
-        "bin_merging;merge_requests/33230;"
-        "bin_merging_fixes;merge_requests/33534;"
-	"more_bin_merging_fixes;merge_requests/34196;"
+        #"bin_merging;merge_requests/33230;"
+        #"bin_merging_fixes;merge_requests/33534;"
+	#"more_bin_merging_fixes;merge_requests/34196;"
         "ir3_9;merge_requests/33183;"
-	#"bypass_empty_fs;merge_requests/33735;"
+	"bypass_empty_fs;merge_requests/33735;"
 )
 failed_patches=()
 commit=""
