@@ -43,7 +43,7 @@ experimental_patches=(
         "r8g8;merge_requests/32619;"
         "lrz_fix;merge_requests/33080;"
         "ir3_9;merge_requests/33183;"
-	"bypass_empty_fs;merge_requests/33735;"
+	#"bypass_empty_fs;merge_requests/33735;"
 )
 failed_patches=()
 commit=""
