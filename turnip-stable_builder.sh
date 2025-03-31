@@ -39,9 +39,9 @@ base_patches=(
         "ir3_b;merge_requests/34110;"
 )
 experimental_patches=(
-        #"bin_merging;merge_requests/33230;"
-        #"bin_merging_fixes;merge_requests/33534;"
-	#"more_bin_merging_fixes;merge_requests/34196;"
+        "bin_merging;merge_requests/33230;"
+        "bin_merging_fixes;merge_requests/33534;"
+        "more_bin_merging_fixes;merge_requests/34196;"
         "lrz_fix;merge_requests/33080;"
         "ir3_9;merge_requests/33183;"
 	#"bypass_empty_fs;merge_requests/33735;"
