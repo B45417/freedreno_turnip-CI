@@ -44,7 +44,7 @@ experimental_patches=(
 	#"more_bin_merging_fixes;merge_requests/34196;"
         "lrz_fix;merge_requests/33080;"
         "ir3_9;merge_requests/33183;"
-	"bypass_empty_fs;merge_requests/33735;"
+	#"bypass_empty_fs;merge_requests/33735;"
         #"shader_clock;merge_requests/29860;"
 	#"r8g8;merge_requests/32619;"
 )
