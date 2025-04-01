@@ -2,8 +2,6 @@ name: Build "turnip-latest"
 
 on:
   workflow_dispatch:
-  schedule:
-  - cron: "20 5 1,15 * *"
 
 jobs:
   start_building_turnip:
