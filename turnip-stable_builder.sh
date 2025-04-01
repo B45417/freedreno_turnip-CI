@@ -45,10 +45,10 @@ base_patches=(
         "ir3_g;merge_requests/34311;"
 )
 experimental_patches=(
-        #"bin_merging;merge_requests/33230;"
-        #"bin_merging_fixes;merge_requests/33534;"
-        #"more_bin_merging_fixes;merge_requests/34196;"
 	#"bypass_empty_fs;merge_requests/33735;"
+        "bin_merging;merge_requests/33230;"
+        "bin_merging_fixes;merge_requests/33534;"
+        "more_bin_merging_fixes;merge_requests/34196;"
         "lrz_fix;merge_requests/33080;"
         "ir3_9;merge_requests/33183;"
         #"shader_clock;merge_requests/29860;"
