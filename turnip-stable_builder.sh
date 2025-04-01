@@ -46,6 +46,8 @@ experimental_patches=(
         "layer_count_fix;merge_requests/34080;"
 	"bc4_5_fast;merge_requests/33945;"
         "lrz_improvements;merge_requests/33851;"
+	"kgsl_1;merge_requests/33894;"
+	"kgsl_2;merge_requests/34328;"
 	"ir3_c;merge_requests/34115;"
         "ir3_d;merge_requests/34257;"
         "ir3_e;merge_requests/34272;"
