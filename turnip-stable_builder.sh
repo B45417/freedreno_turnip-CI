@@ -37,6 +37,11 @@ base_patches=(
         "ir3_8;merge_requests/34055;"
 	"ir3_a;merge_requests/34107;"
         "ir3_b;merge_requests/34110;"
+        "ir3_c;merge_requests/34115;"
+        "ir3_d;merge_requests/34257;"
+        "ir3_e;merge_requests/34272;"
+        "ir3_f;merge_requests/34279;"
+        "ir3_g;merge_requests/34311;"
 )
 experimental_patches=(
         #"bin_merging;merge_requests/33230;"
