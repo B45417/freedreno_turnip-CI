@@ -41,8 +41,8 @@ base_patches=(
         "ir3_b;merge_requests/34110;"
 )
 experimental_patches=(
-	#"bypass_empty_fs;merge_requests/33735;"
-        "r8g8;merge_requests/32619;"
+        #"r8g8;merge_requests/32619;"
+	"bypass_empty_fs;merge_requests/33735;"
 	"logic_operation_fix;merge_requests/34212;"
         "layer_count_fix;merge_requests/34080;"
 	"bc4_5_fast;merge_requests/33945;"
