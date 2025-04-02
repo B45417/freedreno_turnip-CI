@@ -41,7 +41,8 @@ base_patches=(
         "ir3_b;merge_requests/34110;"
 )
 experimental_patches=(
-	"bypass_empty_fs;merge_requests/33735;"
+	#"bypass_empty_fs;merge_requests/33735;"
+        "r8g8;merge_requests/32619;"
 	"logic_operation_fix;merge_requests/34212;"
         "layer_count_fix;merge_requests/34080;"
 	"bc4_5_fast;merge_requests/33945;"
@@ -55,7 +56,6 @@ experimental_patches=(
         "ir3_g;merge_requests/34311;"
 	"ir3_h;merge_requests/34324;"
         #"shader_clock;merge_requests/29860;"
-	#"r8g8;merge_requests/32619;"
 )
 failed_patches=()
 commit=""
