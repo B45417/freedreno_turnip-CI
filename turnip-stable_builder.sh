@@ -15,6 +15,7 @@ mesaver="25.0.2"
 #array of string => commit/branch;patch args
 base_patches=(
         #"r8g8;merge_requests/32619;"
+	#"lrz_improvements;merge_requests/33851;"
         "lrz_unify;merge_requests/32868;"
 	"lrz_fix;merge_requests/33080;"
 	"expectations_update;merge_requests/33158;"
@@ -26,7 +27,6 @@ base_patches=(
         "fragment_size_fix;merge_requests/33991;"
 	"gmem_fix;merge_requests/34082;"
         "lrz_gmem_fix;merge_requests/34238;"
-	"lrz_improvements;merge_requests/33851;"
 	"nir1;merge_requests/33647;"
         "nir2;merge_requests/33722;"
 	"ir3_0;merge_requests/32140;"
