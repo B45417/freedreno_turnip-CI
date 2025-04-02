@@ -14,12 +14,14 @@ mesaver="25.0.2"
 
 #array of string => commit/branch;patch args
 base_patches=(
+        "r8g8;merge_requests/32619;"
         "lrz_unify;merge_requests/32868;"
 	"lrz_fix;merge_requests/33080;"
 	"expectations_update;merge_requests/33158;"
         "bin_merging;merge_requests/33230;"
         "bin_merging_fixes;merge_requests/33534;"
         "more_bin_merging_fixes;merge_requests/34196;"
+	"bypass_empty_fs;merge_requests/33735;"
         "images_gmem_fixes;merge_requests/33514;"
         "fragment_size_fix;merge_requests/33991;"
 	"gmem_fix;merge_requests/34082;"
@@ -41,8 +43,6 @@ base_patches=(
         "ir3_b;merge_requests/34110;"
 )
 experimental_patches=(
-        #"r8g8;merge_requests/32619;"
-	"bypass_empty_fs;merge_requests/33735;"
 	"logic_operation_fix;merge_requests/34212;"
         "layer_count_fix;merge_requests/34080;"
 	"bc4_5_fast;merge_requests/33945;"
@@ -53,8 +53,8 @@ experimental_patches=(
         "ir3_d;merge_requests/34257;"
         "ir3_e;merge_requests/34272;"
         "ir3_f;merge_requests/34279;"
-        "ir3_g;merge_requests/34311;"
-	"ir3_h;merge_requests/34324;"
+        #"ir3_g;merge_requests/34311;"
+	#"ir3_h;merge_requests/34324;"
         #"shader_clock;merge_requests/29860;"
 )
 failed_patches=()
