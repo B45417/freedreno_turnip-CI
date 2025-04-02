@@ -15,14 +15,13 @@ mesaver="25.0.2"
 #array of string => commit/branch;patch args
 base_patches=(
         #"r8g8;merge_requests/32619;"
-	#"lrz_improvements;merge_requests/33851;"
         "lrz_unify;merge_requests/32868;"
 	"lrz_fix;merge_requests/33080;"
+        "lrz_improvements;merge_requests/33851;"
 	"expectations_update;merge_requests/33158;"
         "bin_merging;merge_requests/33230;"
         "bin_merging_fixes;merge_requests/33534;"
         "more_bin_merging_fixes;merge_requests/34196;"
-	"bypass_empty_fs;merge_requests/33735;"
         "images_gmem_fixes;merge_requests/33514;"
         "fragment_size_fix;merge_requests/33991;"
 	"gmem_fix;merge_requests/34082;"
@@ -44,6 +43,8 @@ base_patches=(
         "ir3_b;merge_requests/34110;"
 )
 experimental_patches=(
+        "bypass_empty_fs;merge_requests/33735;"
+        "bypass_empty_fs_ir3fix;merge_requests/34348;"
 	"logic_operation_fix;merge_requests/34212;"
         "layer_count_fix;merge_requests/34080;"
 	"bc4_5_fast;merge_requests/33945;"
