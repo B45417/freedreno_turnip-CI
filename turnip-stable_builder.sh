@@ -23,8 +23,6 @@ base_patches=(
         "bin_merging_fixes;merge_requests/33534;"
         "more_bin_merging_fixes;merge_requests/34196;"
         "images_gmem_fixes;merge_requests/33514;"
-        "fragment_size_fix;merge_requests/33991;"
-	"gmem_fix;merge_requests/34082;"
         "lrz_gmem_fix;merge_requests/34238;"
 	"nir1;merge_requests/33647;"
         "nir2;merge_requests/33722;"
@@ -39,8 +37,10 @@ base_patches=(
         "ir3_8-1;merge_requests/32454;"
 	"ir3_8-2;merge_requests/34055;"
         "ir3_9;merge_requests/33183;"
-	"ir3_a;merge_requests/34107;"
         "ir3_b;merge_requests/34110;"
+	#"fragment_size_fix;merge_requests/33991;"
+	#"gmem_fix;merge_requests/34082;"
+        #"ir3_a;merge_requests/34107;"
 )
 experimental_patches=(
         "bypass_empty_fs;merge_requests/33735;"
