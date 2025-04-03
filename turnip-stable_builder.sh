@@ -38,9 +38,9 @@ base_patches=(
 	"ir3_8-2;merge_requests/34055;"
         "ir3_9;merge_requests/33183;"
         "ir3_b;merge_requests/34110;"
-	#"fragment_size_fix;merge_requests/33991;"
-	#"gmem_fix;merge_requests/34082;"
-        #"ir3_a;merge_requests/34107;"
+	"fragment_size_fix;merge_requests/33991;"
+	"gmem_fix;merge_requests/34082;"
+        "ir3_a;merge_requests/34107;"
 )
 experimental_patches=(
         "bypass_empty_fs;merge_requests/33735;"
