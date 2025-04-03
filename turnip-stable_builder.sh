@@ -170,8 +170,8 @@ apply_patches() {
 		patch_source="$(echo $patch | cut -d ";" -f 2 | xargs)"
 		patch_args=$(echo $patch | cut -d ";" -f 3 | xargs)
 		if [[ $patch_source == *"../.."* ]]; then
-			if git apply --check --verbose --recount $patch_args "$patch_source"; then
-                                git apply $patch_args "$patch_source"
+			if git apply --recount --check $patch_args "$patch_source"; then
+                                git apply --verbose $patch_args "$patch_source"
 				echo "Patch applied successfully"
 			else
 				echo "Failed to apply $patch"
