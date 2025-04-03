@@ -172,7 +172,7 @@ apply_patches() {
 		patch_args=$(echo $patch | cut -d ";" -f 3 | xargs)
 		if [[ $patch_source == *"../.."* ]]; then
 			if git apply --check $patch_args "$patch_source"; then
-                            if git apply --reverse --check $patch_args "$patch_source"; then
+                            if git apply --check --reverse $patch_args "$patch_source"; then
 			        echo "Failed to apply $patch"
 				failed_patches+=("$patch")
 			    else
@@ -188,7 +188,7 @@ apply_patches() {
 			curl --output "../$patch_file".patch -k --retry-delay 30 --retry 5 -f --retry-all-errors https://gitlab.freedesktop.org/mesa/mesa/-/"$patch_source".patch
 			sleep 1
 
-			if git apply $patch_args "../$patch_file".patch ; then
+			if git apply $patch_args "../$patch_file".patch; then
 				echo "Patch applied successfully"
 			else
 				echo "Failed to apply $patch"
