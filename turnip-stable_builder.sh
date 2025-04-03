@@ -14,7 +14,7 @@ mesaver="25.0.3"
 
 #array of string => commit/branch;patch args
 base_patches=(
-        "r8g8;merge_requests/32619;"
+        #"r8g8;merge_requests/32619;"
         "lrz_unify;merge_requests/32868;"
 	"lrz_fix;merge_requests/33080;"
         "lrz_improvements;merge_requests/33851;"
