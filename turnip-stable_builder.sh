@@ -49,8 +49,8 @@ base_patches=(
         "ir3_d;merge_requests/34257;"
         "ir3_e;merge_requests/34272;"
         "ir3_f;merge_requests/34279;"
-	"ir3_g;merge_requests/34290;"
 	"ir3_ra;merge_requests/33319;"
+        #"ir3_g;merge_requests/34290;"
 )
 experimental_patches=(
 	"logic_operation_fix;merge_requests/34212;"
