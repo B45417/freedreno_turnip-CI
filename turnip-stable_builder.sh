@@ -22,10 +22,13 @@ base_patches=(
         "bin_merging;merge_requests/33230;"
         "bin_merging_fixes;merge_requests/33534;"
         "more_bin_merging_fixes;merge_requests/34196;"
+	"frag_density_map;merge_requests/33500;"
         "images_gmem_fixes;merge_requests/33514;"
         "fragment_size_fix;merge_requests/33991;"
 	"gmem_fix;merge_requests/34082;"
         "lrz_gmem_fix;merge_requests/34238;"
+	"bypass_empty_fs;merge_requests/33735;"
+        "bypass_empty_fs_ir3fix;merge_requests/34348;"
 	"nir1;merge_requests/33647;"
         "nir2;merge_requests/33722;"
 	"ir3_0;merge_requests/32140;"
@@ -41,10 +44,9 @@ base_patches=(
         "ir3_9;merge_requests/33183;"
 	"ir3_a;merge_requests/34107;"
         "ir3_b;merge_requests/34110;"
+	"ir3_ra;merge_requests/33319;"
 )
 experimental_patches=(
-        "bypass_empty_fs;merge_requests/33735;"
-        "bypass_empty_fs_ir3fix;merge_requests/34348;"
 	"logic_operation_fix;merge_requests/34212;"
         "layer_count_fix;merge_requests/34080;"
 	"bc4_5_fast;merge_requests/33945;"
@@ -57,7 +59,6 @@ experimental_patches=(
         "ir3_optim1;merge_requests/34311;"
 	"ir3_optim2;merge_requests/34324;"
         "ir3_optim3;merge_requests/34344;"
-        "frag_density_map;merge_requests/33500;"
 )
 failed_patches=()
 commit=""
