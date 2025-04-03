@@ -241,9 +241,7 @@ EOF
 		-Dvulkan-drivers=freedreno \
                 -Dvulkan-beta=true \
                 -Dgallium-drivers= \
-		-Dfreedreno-kmds=kgsl \
-		-Db_lto=true \
-                -Dstrip=true &> "$workdir"/meson_log
+		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
