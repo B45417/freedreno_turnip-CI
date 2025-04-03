@@ -14,7 +14,7 @@ mesaver="25.0.3"
 
 #array of string => commit/branch;patch args
 base_patches=(
-        #"r8g8;merge_requests/32619;"
+        "r8g8;merge_requests/32619;"
         "lrz_unify;merge_requests/32868;"
 	"lrz_fix;merge_requests/33080;"
         "lrz_improvements;merge_requests/33851;"
@@ -29,6 +29,7 @@ base_patches=(
         "lrz_gmem_fix;merge_requests/34238;"
 	"bypass_empty_fs;merge_requests/33735;"
         "bypass_empty_fs_ir3fix;merge_requests/34348;"
+	"layer_count_fix;merge_requests/34080;"
 	"nir1;merge_requests/33647;"
         "nir2;merge_requests/33722;"
 	"ir3_0;merge_requests/32140;"
@@ -44,18 +45,18 @@ base_patches=(
         "ir3_9;merge_requests/33183;"
 	"ir3_a;merge_requests/34107;"
         "ir3_b;merge_requests/34110;"
-	"ir3_ra;merge_requests/33319;"
-)
-experimental_patches=(
-	"logic_operation_fix;merge_requests/34212;"
-        "layer_count_fix;merge_requests/34080;"
-	"bc4_5_fast;merge_requests/33945;"
-	"kgsl_1;merge_requests/33894;"
-	"kgsl_2;merge_requests/34328;"
 	"ir3_c;merge_requests/34115;"
         "ir3_d;merge_requests/34257;"
         "ir3_e;merge_requests/34272;"
         "ir3_f;merge_requests/34279;"
+	"ir3_g;merge_requests/34290;"
+	"ir3_ra;merge_requests/33319;"
+)
+experimental_patches=(
+	"logic_operation_fix;merge_requests/34212;"
+	"bc4_5_fast;merge_requests/33945;"
+	"kgsl_1;merge_requests/33894;"
+	"kgsl_2;merge_requests/34328;"
         "ir3_optim1;merge_requests/34311;"
 	"ir3_optim2;merge_requests/34324;"
         "ir3_optim3;merge_requests/34344;"
