@@ -93,7 +93,7 @@ prep () {
 }
 
 check_deps(){
-	pip install meson PyYAML --break-system-packages
+	pip install meson PyYAML
 
 	echo "Checking system for required Dependencies ..."
 	for deps_chk in $deps;
@@ -171,14 +171,8 @@ apply_patches() {
 		patch_source="$(echo $patch | cut -d ";" -f 2 | xargs)"
 		patch_args=$(echo $patch | cut -d ";" -f 3 | xargs)
 		if [[ $patch_source == *"../.."* ]]; then
-			if git apply --check $patch_args "$patch_source"; then
-                            if git apply --check --reverse $patch_args "$patch_source"; then
-			        echo "Failed to apply $patch"
-				failed_patches+=("$patch")
-			    else
-                                git apply $patch_args "$patch_source"
-				echo "Patch applied successfully"
-                            fi
+			if git apply $patch_args "$patch_source"; then
+                            echo "Patch applied successfully"
 			else
                             echo "Failed to apply $patch"
 			    failed_patches+=("$patch")
