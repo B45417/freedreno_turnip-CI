@@ -222,7 +222,6 @@ c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
 cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
-strip = '$ndk/llvm-strip'
 [host_machine]
 system = 'android'
 cpu_family = 'aarch64'
@@ -241,8 +240,7 @@ EOF
                 -Dvulkan-beta=true \
                 -Dgallium-drivers= \
 		-Dfreedreno-kmds=kgsl \
-                -Db_lto=true \
-		-Dstrip=true &> "$workdir"/meson_log
+                -Db_lto=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
