@@ -30,6 +30,7 @@ base_patches=(
 	"bypass_empty_fs;merge_requests/33735;"
         "bypass_empty_fs_ir3fix;merge_requests/34348;"
 	"layer_count_fix;merge_requests/34080;"
+        "logic_operation_fix;merge_requests/34212;"
 	"nir1;merge_requests/33647;"
         "nir2;merge_requests/33722;"
 	"ir3_0;merge_requests/32140;"
@@ -53,13 +54,12 @@ base_patches=(
         "ir3_g;merge_requests/34290;"
 )
 experimental_patches=(
-	"logic_operation_fix;merge_requests/34212;"
 	"bc4_5_fast;merge_requests/33945;"
 	"kgsl_1;merge_requests/33894;"
 	"kgsl_2;merge_requests/34328;"
-        "ir3_optim1;merge_requests/34311;"
-	"ir3_optim2;merge_requests/34324;"
-        "ir3_optim3;merge_requests/34344;"
+        #"ir3_optim1;merge_requests/34311;"
+	#"ir3_optim2;merge_requests/34324;"
+        #"ir3_optim3;merge_requests/34344;"
 )
 failed_patches=()
 commit=""
