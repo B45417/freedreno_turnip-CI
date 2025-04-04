@@ -54,8 +54,8 @@ base_patches=(
 )
 experimental_patches=(
 	"bc4_5_fast;merge_requests/33945;"
-	"kgsl_1;merge_requests/33894;"
-	"kgsl_2;merge_requests/34328;"
+	#"kgsl_1;merge_requests/33894;"
+	#"kgsl_2;merge_requests/34328;"
         "ir3_optim1;merge_requests/34311;"
 	"ir3_optim2;merge_requests/34324;"
         "ir3_optim3;merge_requests/34344;"
