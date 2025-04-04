@@ -56,9 +56,9 @@ experimental_patches=(
 	"bc4_5_fast;merge_requests/33945;"
 	"kgsl_1;merge_requests/33894;"
 	"kgsl_2;merge_requests/34328;"
-        #"ir3_optim1;merge_requests/34311;"
-	#"ir3_optim2;merge_requests/34324;"
-        #"ir3_optim3;merge_requests/34344;"
+        "ir3_optim1;merge_requests/34311;"
+	"ir3_optim2;merge_requests/34324;"
+        "ir3_optim3;merge_requests/34344;"
 )
 failed_patches=()
 commit=""
@@ -240,7 +240,9 @@ EOF
 		-Dvulkan-drivers=freedreno \
                 -Dvulkan-beta=true \
                 -Dgallium-drivers= \
-		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
+		-Dfreedreno-kmds=kgsl \
+                -Db_lto=true \
+		-Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
