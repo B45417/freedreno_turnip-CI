@@ -19,6 +19,8 @@ base_patches=(
 	"nir_store_vectorize;merge_requests/34414;"
 	"vk_meta;merge_requests/34399;"
         "lrz;merge_requests/34407;"
+	"fs_prefetch;merge_requests/34422;"
+        "lrz2;merge_requests/34423;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
