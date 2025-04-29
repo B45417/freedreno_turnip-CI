@@ -17,6 +17,8 @@ base_patches=(
 	"cmdbuf;merge_requests/34588;"
         "bigger_block;merge_requests/34587;"
 	"buffer_limit;merge_requests/34746;"
+        "segfault_fix;merge_requests/34749;"
+	"nir_optim;merge_requests/34739;"
 	"ir3_cp;merge_requests/34397;--reverse"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
