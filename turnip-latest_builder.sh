@@ -14,7 +14,7 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
  	"bc4_5_fast;merge_requests/33945;"
         "lrz;merge_requests/34577;"
-        "bigger_block;merge_requests/34587;"
+        #"bigger_block;merge_requests/34587;"
 	"nir_optim;merge_requests/34739;"
         "fast_border;merge_requests/34786;"
 	"ir3_cp;merge_requests/34397;--reverse"
