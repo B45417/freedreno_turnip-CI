@@ -196,6 +196,7 @@ EOF
 		-Dandroid-stub=true \
 		-Dvulkan-drivers=freedreno \
                 -Dvulkan-beta=true \
+		-Degl=disabled \
                 -Dgallium-drivers= \
 		-Dfreedreno-kmds=kgsl \
                 -Db_lto=true \
