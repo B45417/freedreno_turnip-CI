@@ -14,6 +14,7 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
  	"bc4_5_fast;merge_requests/33945;"
 	"early_z;merge_requests/34973;"
+        "lrz;merge_requests/35026;"
 	"ir3_cp;merge_requests/34397;--reverse"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
