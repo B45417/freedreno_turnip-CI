@@ -21,9 +21,6 @@ base_patches=(
 )
 experimental_patches=(
         "ir3_cp;merge_requests/34397;--reverse"
-        "ir3_optim1;merge_requests/34311;"
-	"ir3_optim2;merge_requests/34324;"
-        "ir3_optim3;merge_requests/34344;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
