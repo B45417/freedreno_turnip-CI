@@ -15,7 +15,6 @@ base_patches=(
  	"blend;merge_requests/34991;"
 	"ir3_ssbo;merge_requests/35092;"
 	"gmem;merge_requests/35330;"
-        "mrt;merge_requests/35402;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
