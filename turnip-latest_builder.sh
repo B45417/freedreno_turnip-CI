@@ -15,7 +15,6 @@ base_patches=(
 	"ir3_ssbo;merge_requests/35092;"
         "ir3_64b;merge_requests/33797;"
 	"gmem;merge_requests/35330;"
-        "nir;merge_requests/35514;"
         "spirv;merge_requests/35532;"
 	"hmi;merge_requests/35561;"
         "icd;merge_requests/35567;"
