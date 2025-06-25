@@ -22,7 +22,7 @@ experimental_patches=(
         "copy_raw;merge_requests/35610;"
         "ir3_cp;merge_requests/34397;--reverse"
 	"gmem;merge_requests/17943;--reverse"
-        "vk;merge_requests/35594;"
+        #"vk;merge_requests/35594;"
         "float16;merge_requests/35709;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
