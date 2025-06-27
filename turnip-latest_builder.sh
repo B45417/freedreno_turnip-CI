@@ -12,9 +12,8 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
 base_patches=(
-        "float16;commits/7604f38855392d7282f11b8882f33f659d92d183;"
-	"float16;commits/01f31320cf72187d9577eff734b1385f7bd4583a;"
 	"opvar;merge_requests/35669;"
+        "float16;merge_requests/35709;"
         "ir3_fp16;merge_requests/35759;"
 	"gl_HelperInvocation;merge_requests/35788;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
