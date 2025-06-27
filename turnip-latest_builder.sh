@@ -14,9 +14,10 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
         "vk;merge_requests/34242;"
         "ir3_ssbo;merge_requests/35092;"
-        "nir;merge_requests/35668;"
+	"ir3_ssbo2;merge_requests/34344;"
 	"opvar;merge_requests/35669;"
         "ir3_fp16;merge_requests/35759;"
+	"gl_HelperInvocation;merge_requests/35788;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
