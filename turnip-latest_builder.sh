@@ -17,12 +17,12 @@ base_patches=(
         "float16;merge_requests/35709;"
         "ir3_fp16;merge_requests/35759;"
 	"gl_HelperInvocation;merge_requests/35788;"
-        "tu_vk;merge_requests/35894;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
 	"ir3_ssbo2;merge_requests/34344;"
         "copy_raw;merge_requests/35610;"
+	"tu_vk;merge_requests/35894;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
