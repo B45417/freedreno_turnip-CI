@@ -17,10 +17,11 @@ base_patches=(
         "ir3_fp16;merge_requests/35759;"
 	"gl_HelperInvocation;merge_requests/35788;"
         "ir3_legalize;merge_requests/35934;"
+	"nir_opt;merge_requests/35935;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-	"tu_vk;merge_requests/35894;"
+        "ir3;merge_requests/34397;--reverse"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
