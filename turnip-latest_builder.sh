@@ -16,6 +16,9 @@ base_patches=(
         "ir3_fp16;merge_requests/35759;"
 	"gl_HelperInvocation;merge_requests/35788;"
 	"nir_opt;merge_requests/35935;"
+        "nir_opt2;merge_requests/35938;"
+	"nir_bitsize;merge_requests/35744;"
+        "nir_cf;merge_requests/35975;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
