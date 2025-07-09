@@ -12,16 +12,15 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
 base_patches=(
-        "ir3_ssbo;merge_requests/35092;"
 	"opvar;merge_requests/35669;"
         "ir3_fp16;merge_requests/35759;"
 	"gl_HelperInvocation;merge_requests/35788;"
-        "ir3_legalize;merge_requests/35934;"
 	"nir_opt;merge_requests/35935;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
         "copy_raw;merge_requests/35610;"
+	"ir3_ssbo;merge_requests/35092;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
