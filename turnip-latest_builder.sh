@@ -19,6 +19,7 @@ base_patches=(
 	"nir_opt;merge_requests/35935;"
         "nir_cf;merge_requests/35975;"
 	"spirv;merge_requests/36049;"
+        "nir_spirv;merge_requests/36080;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
