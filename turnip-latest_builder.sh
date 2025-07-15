@@ -13,7 +13,6 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 #array of string => commit/branch;patch args
 base_patches=(
         "nir_opvar;merge_requests/35669;"
-        "nir_bitsize;merge_requests/35744;"
 	"nir_opt;merge_requests/35935;"
         "nir_cf;merge_requests/35975;"
 	"nir_struct;merge_requests/36087;"
