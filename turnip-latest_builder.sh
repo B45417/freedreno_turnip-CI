@@ -16,10 +16,9 @@ base_patches=(
         "tu;merge_requests/36172;"
         "vk;merge_requests/36321;"
 	"tu_nir;merge_requests/36342;"
-        "nir_pass;merge_requests/36372;"
-	"nir_uub;merge_requests/36381;"
         "ir3_ra;merge_requests/36374;"
 	"ir3_shared_ra;merge_requests/36376;"
+        "vk_antilag;merge_requests/36402;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
