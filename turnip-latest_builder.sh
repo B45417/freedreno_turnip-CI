@@ -17,7 +17,6 @@ base_patches=(
 )
 experimental_patches=(
         "copy_raw;merge_requests/35610;"
-	"tu_cncbinning;merge_requests/36590;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
