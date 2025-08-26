@@ -15,10 +15,11 @@ base_patches=(
 		"tu_buffer;merge_requests/36939;"
         "tu_wsi;merge_requests/36948;"
 	    "ir3_spill;merge_requests/36667;"
+	    "drm_shim;merge_requests/37000;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-		#"tu_sbr;merge_requests/32533;"
+		"layout;merge_requests/36986;"
         #"copy_raw;merge_requests/35610;"
 	    #"tu_cncbinning;merge_requests/36590;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
