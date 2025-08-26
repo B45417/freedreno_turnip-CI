@@ -18,10 +18,10 @@ base_patches=(
 	    "drm_shim;merge_requests/37000;"
 	    "test;merge_requests/36928;--reverse"
 	    "test;merge_requests/36786;--reverse"
-	    "test;merge_requests/36751;--reverse"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
+	    "test;merge_requests/36751;--reverse"
 	    "test;merge_requests/36901;--reverse"
 	    "test;merge_requests/36908;--reverse"
         #"copy_raw;merge_requests/35610;"
