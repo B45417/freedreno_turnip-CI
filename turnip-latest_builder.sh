@@ -23,7 +23,6 @@ experimental_patches=(
 		"bin_merging;merge_requests/35894;"
         "tu_wsi;merge_requests/35924;"
         "tu_lrz;merge_requests/37091;"
-		"tu_cleanup;merge_requests/37099;"
         #"copy_raw;merge_requests/35610;"
 	    #"tu_cncbinning;merge_requests/36590;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
