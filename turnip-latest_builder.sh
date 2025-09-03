@@ -20,7 +20,6 @@ base_patches=(
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-		"tu_wsi;merge_requests/35924;"
         "tu;merge_requests/37151;"
 		#"bin_merging;merge_requests/35894;"
         #"copy_raw;merge_requests/35610;"
