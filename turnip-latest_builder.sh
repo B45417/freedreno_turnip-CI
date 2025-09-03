@@ -17,11 +17,11 @@ base_patches=(
 	    "ir3_sched;merge_requests/37004;"
 		"ir3_ra;merge_requests/37003;"
         "ir3_32b;merge_requests/37138;"
-		"tu_wsi;merge_requests/37151;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-		"bin_merging;merge_requests/35894;"
+		"tu_wsi;merge_requests/35924;"
+		#"bin_merging;merge_requests/35894;"
         #"copy_raw;merge_requests/35610;"
 	    #"tu_cncbinning;merge_requests/36590;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
