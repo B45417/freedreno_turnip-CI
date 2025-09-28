@@ -14,7 +14,6 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
         "tu_vk_fix;merge_requests/37304;"
 		"tu_nir;merge_requests/37608;"
-		"android_llvm;merge_requests/37607;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
@@ -194,15 +193,16 @@ EOF
 	meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
    		-Dplatforms=android \
-     		-Dplatform-sdk-version=$sdkver \
-       		-Dandroid-stub=true \
+     	-Dplatform-sdk-version=$sdkver \
+       	-Dandroid-stub=true \
+		-Dandroid-libbacktrace=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
   	 	-Dvulkan-beta=true \
   		-Dfreedreno-kmds=kgsl \
-                -Degl=disabled \
+        -Degl=disabled \
 		-Db_lto=true \
-                -Dstrip=true &> "$workdir"/meson_log
+        -Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
