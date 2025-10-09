@@ -20,7 +20,7 @@ base_patches=(
 experimental_patches=(
 		#"bin_merging;merge_requests/35894;"
         #"copy_raw;merge_requests/35610;"
-	    "tu_cncbinning;merge_requests/36590;"
+	    #"tu_cncbinning;merge_requests/36590;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
