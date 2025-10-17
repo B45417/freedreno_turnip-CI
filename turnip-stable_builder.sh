@@ -14,7 +14,6 @@ mesaver="25.2.5"
 
 #array of string => commit/branch;patch args
 base_patches=(
-   "force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 experimental_patches=(
 )
