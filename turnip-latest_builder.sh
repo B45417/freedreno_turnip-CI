@@ -14,6 +14,7 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
 		"tu_lrz;merge_requests/38034;"
 		"tu;merge_requests/38053;"
+		"tu_subpass;merge_requests/38064;"
         #"copy_raw;merge_requests/35610;"
 	    #"tu_cncbinning;merge_requests/36590;"
 		#"tu_autotune;merge_requests/37802;"
