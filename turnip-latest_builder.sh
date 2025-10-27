@@ -15,9 +15,9 @@ base_patches=(
 		"tu_lrz;merge_requests/38034;"
 		"tu;merge_requests/38053;"
 		"tu_subpass;merge_requests/38064;"
-		"tu_multiview;merge_requests/35894;"
+		#"tu_multiview;merge_requests/35894;"
         #"copy_raw;merge_requests/35610;"
-	    "tu_cncbinning;merge_requests/36590;"
+	    #"tu_cncbinning;merge_requests/36590;"
 		#"tu_autotune;merge_requests/37802;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
