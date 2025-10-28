@@ -15,6 +15,7 @@ base_patches=(
 		"tu_lrz;merge_requests/38034;"
 		"tu;merge_requests/38053;"
 		"tu_subpass;merge_requests/38064;"
+		"tu_softfloat64;merge_requests/38088;"
 		#"tu_multiview;merge_requests/35894;"
         #"copy_raw;merge_requests/35610;"
 	    #"tu_cncbinning;merge_requests/36590;"
