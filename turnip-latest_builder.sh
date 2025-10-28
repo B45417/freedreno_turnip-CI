@@ -12,7 +12,7 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
 base_patches=(
-		"tu;merge_requests/38053;"
+		"tu_transform;merge_requests/38108;"
 		"tu_softfloat64;merge_requests/38088;"
 		#"tu_multiview;merge_requests/35894;"
         #"copy_raw;merge_requests/35610;"
