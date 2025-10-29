@@ -12,12 +12,9 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
 base_patches=(
-		"tu_transform;merge_requests/38108;"
-		"tu_softfloat64;merge_requests/38088;"
 		#"tu_multiview;merge_requests/35894;"
         #"copy_raw;merge_requests/35610;"
-	    #"tu_cncbinning;merge_requests/36590;"
-		#"tu_autotune;merge_requests/37802;"
+		"tu_autotune;merge_requests/37802;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
