@@ -17,6 +17,7 @@ base_patches=(
 		"tu_vk;merge_requests/38250;"
 		"spirv;merge_requests/38248;"
 		"vk;merge_requests/38323;"
+		"cnc_binning;merge_requests/36590;--reverse"
 		#"tu_autotune;merge_requests/37802;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
