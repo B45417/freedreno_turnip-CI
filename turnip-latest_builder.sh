@@ -15,8 +15,8 @@ base_patches=(
 		"vk;merge_requests/38323;"
 		"mesa;merge_requests/38531;"
 		"tu_astc;merge_requests/38859;"
-		"tu_direct;merge_requests/38960;"
-		"vk_barrier;merge_requests/38956;"
+		#"tu_direct;merge_requests/38960;"
+		#"vk_barrier;merge_requests/38956;"
 		#"tu_autotune;merge_requests/37802;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
