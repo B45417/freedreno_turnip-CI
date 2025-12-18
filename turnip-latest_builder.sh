@@ -15,6 +15,7 @@ base_patches=(
 		"vk;merge_requests/38323;"
 		"mesa;merge_requests/38531;"
 		"tu_astc;merge_requests/38859;"
+		"vk_flags;merge_requests/38967;"
 		#"tu_direct;merge_requests/38960;"
 		#"vk_barrier;merge_requests/38956;"
 		#"tu_autotune;merge_requests/37802;"
