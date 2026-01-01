@@ -14,15 +14,15 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
 		"vk;merge_requests/38323;"
 		"tu_astc;merge_requests/38859;"
-		"tu_imgproc;merge_requests/38559;"
+		#"tu_imgproc;merge_requests/38559;"
 		"vk_flags;merge_requests/38967;"
 		#"tu_direct;merge_requests/38960;"
 		#"vk_barrier;merge_requests/38956;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-        "copy_raw;merge_requests/35610;"
-		"tu_autotune;merge_requests/37802;"
+        #"copy_raw;merge_requests/35610;"
+		#"tu_autotune;merge_requests/37802;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
