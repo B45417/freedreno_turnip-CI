@@ -14,6 +14,7 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
 		"vk;merge_requests/38323;"
 		"tu_astc;merge_requests/38859;"
+		"ir3_fix_leak;merge_requests/39113;"
 		#"tu_imgproc;merge_requests/38559;"
 		"vk_flags;merge_requests/38967;"
 		#"tu_direct;merge_requests/38960;"
