@@ -26,7 +26,7 @@ base_patches=(
 experimental_patches=(
         "storagebuffer;merge_requests/39124;"
         #"copy_raw;merge_requests/35610;"
-		"tu_autotune;merge_requests/37802;"
+		#"tu_autotune;merge_requests/37802;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
