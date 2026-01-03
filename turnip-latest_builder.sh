@@ -17,6 +17,8 @@ base_patches=(
 		"ir3_fix_leak;merge_requests/39113;"
 		#"tu_imgproc;merge_requests/38559;"
 		"vk_flags;merge_requests/38967;"
+		"tu_trace;merge_requests/39128;"
+		"tu_trace2;merge_requests/39129;"
 		#"tu_direct;merge_requests/38960;"
 		#"vk_barrier;merge_requests/38956;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
@@ -24,7 +26,7 @@ base_patches=(
 experimental_patches=(
         "storagebuffer;merge_requests/39124;"
         #"copy_raw;merge_requests/35610;"
-		#"tu_autotune;merge_requests/37802;"
+		"tu_autotune;merge_requests/37802;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
