@@ -16,6 +16,7 @@ base_patches=(
 		"vk_flags;merge_requests/38967;"
 		"tu_gmem;merge_requests/39235;"
 		"tu_fix;merge_requests/39236;"
+		"tu_fixes;merge_requests/39254;"
 		#"tu_direct;merge_requests/38960;"
 		#"vk_barrier;merge_requests/38956;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
