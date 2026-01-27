@@ -22,9 +22,7 @@ base_patches=(
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
-		#"tu_vk;merge_requests/39495;"
-		#"tu_qcom;merge_requests/35894;"
-		"tu_autotune;merge_requests/37802;"
+		#"tu_autotune;merge_requests/37802;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
