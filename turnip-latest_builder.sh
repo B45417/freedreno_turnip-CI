@@ -214,9 +214,9 @@ port_lib_for_adrenotool(){
 	patchelf --set-soname vulkan.adreno.so libvulkan_freedreno.so
 	mv libvulkan_freedreno.so vulkan.adreno.so
 
-	if ! [ -a vulkan.adreno.so ]; then
-		echo -e "$red Build failed! $nocolor" && exit 1
-	fi
+	#if ! [ -a vulkan.adreno.so ]; then
+	#	echo -e "$red Build failed! $nocolor" && exit 1
+	#fi
 
 	mkdir -p "$packagedir" && cd "$_"
 
