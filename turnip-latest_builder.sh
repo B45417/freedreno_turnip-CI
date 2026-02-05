@@ -200,7 +200,6 @@ EOF
   		-Dvulkan-drivers=freedreno \
   	 	-Dvulkan-beta=true \
   		-Dfreedreno-kmds=kgsl \
-		-Db_lto=true \
         -Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
