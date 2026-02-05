@@ -1,4 +1,6 @@
 This is a bash script to build freedreno/turnip for android as an adrenotool package.
+
+*All releases rebuilt without LTO, which was causing random untrackable bugs. Beta vulkan features removed from stable releases.
   
 ### To Build Locally
 - Obtain the script [turnip_builder.sh](https://raw.githubusercontent.com/Weab-chan/freedreno_turnip-CI/main/turnip_builder.sh) on your linux environment. (visit the link and use ```CTRL + S``` keys)
