@@ -195,11 +195,9 @@ EOF
 		-Dplatform-sdk-version=$sdkver \
 		-Dandroid-stub=true \
 		-Dvulkan-drivers=freedreno \
-                -Dvulkan-beta=true \
 		-Degl=disabled \
-                -Dgallium-drivers= \
+        -Dgallium-drivers= \
 		-Dfreedreno-kmds=kgsl \
-                -Db_lto=true \
 		-Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
