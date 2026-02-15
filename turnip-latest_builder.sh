@@ -23,7 +23,8 @@ experimental_patches=(
         #"copy_raw;merge_requests/35610;"
 		#"tu_autotune;merge_requests/37802;"
 		#"tu_subsample;merge_requests/39868;"
-        "force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
+		"tu_fdm/gen8;merge_requests/39789;"
+        #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
 commit=""
