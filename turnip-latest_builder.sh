@@ -23,6 +23,7 @@ experimental_patches=(
         #"copy_raw;merge_requests/35610;"
 		#"tu_autotune;merge_requests/37802;"
 		#"tu_subsample;merge_requests/39868;"
+		"tu_kgsl;merge_requests/39751;"
 		"tu_fdm/gen8;merge_requests/39789;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
