@@ -195,8 +195,10 @@ EOF
 		-Dplatform-sdk-version=$sdkver \
 		-Dandroid-stub=true \
 		-Dvulkan-drivers=freedreno \
-		-Degl=disabled \
-        -Dgallium-drivers= \
+		-Degl=enabled \
+        -Dgles2=enabled \
+		-Dgles1=disabled \
+        -Dgallium-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
 		-Dstrip=true &> "$workdir"/meson_log
 
