@@ -15,9 +15,7 @@ base_patches=(
 		"vk;merge_requests/38323;"
 		"tu_direct;merge_requests/38960;"
 		"vk_barrier;merge_requests/38956;"
-		"tu_fixds;merge_requests/39236;"
 		"ir3;merge_requests/39890;"
-		"tu_kgsl;merge_requests/39751;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
@@ -25,6 +23,7 @@ experimental_patches=(
 		#"tu_autotune;merge_requests/37802;"
 		#"tu_subsample;merge_requests/39868;"
 		"tu_fdm/gen8;merge_requests/39789;"
+		"tu_kgsl;merge_requests/39751;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
