@@ -15,7 +15,6 @@ base_patches=(
 		"vk;merge_requests/38323;"
 		"tu_direct;merge_requests/38960;"
 		"vk_barrier;merge_requests/38956;"
-		"ir3;merge_requests/39890;"
 		"tu_fdm;merge_requests/39965;"
 		"tu_fdm;merge_requests/39976;"
 		"spirv;merge_requests/40017;"
