@@ -17,6 +17,7 @@ base_patches=(
 		"vk_barrier;merge_requests/38956;"
 		"tu_fdm;merge_requests/39976;"
 		"spirv;merge_requests/40017;"
+		"tu_ubwc;merge_requests/39491;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
