@@ -1,7 +1,5 @@
 This is a bash script to build freedreno/turnip for android as an adrenotool package.
 
-*Releases with the overhauled autotune support the following flags to manually set sysmem or gmem: TU_AUTOTUNE_ALGO = prefer_sysmem/prefer_gmem
-
 *All releases rebuilt without LTO, which was causing random untrackable bugs. Beta vulkan features removed from stable releases.
   
 ### To Build Locally
