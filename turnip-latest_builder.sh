@@ -14,6 +14,7 @@ mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 base_patches=(
 		"vk;merge_requests/38323;"
 		"wsi_syncobj;merge_requests/31149;"
+		"wsi_explsync;merge_requests/36591;"
 		"tu;merge_requests/40552;"
 		#"tu_direct;merge_requests/38960;"
 		#"vk_barrier;merge_requests/38956;"
