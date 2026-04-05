@@ -8,6 +8,7 @@ workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="36"
+cver="35"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
@@ -101,6 +102,14 @@ prepare_workdir(){
 		echo "Cloning mesa ..." $'\n'
 		git clone --depth=1 "$mesasrc"
 
+		awk '/max_draw_states/ { if (++count > 1) next } 1' src/freedreno/common/freedreno_dev_info.h > temp_dev_info && mv temp_dev_info src/freedreno/common/freedreno_dev_info.h
+    
+    	# REMOVENDO A PASTA .GIT PARA LIMPAR O DXVK HUD
+    	rm -rf .git
+    
+    	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+    	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
+    	sed -i 's/native_buffer->handle->/((const native_handle_t \*)native_buffer->handle)->/g' src/vulkan/runtime/vk_android.c || true
 		mkdir -p subprojects && cd subprojects
     	rm -rf spirv-tools spirv-headers
     	git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
@@ -180,7 +189,6 @@ build_lib_for_android(){
 		ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
 	fi
 	
-    local cver="35"
     [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34"
 	
 	cat <<EOF >"android-aarch64"
