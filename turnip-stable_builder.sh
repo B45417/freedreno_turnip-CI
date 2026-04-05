@@ -6,8 +6,9 @@ nocolor='\033[0m'
 deps="meson ninja patchelf unzip curl pip flex bison zip git"
 workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
-ndkver="android-ndk-r28"
-sdkver="30"
+ndkver="android-ndk-r29"
+sdkver="36"
+cver="35"
 mesasrc="https://archive.mesa3d.org/mesa-26.0.4.tar.xz"
 mesadir="mesa-26.0.4"
 mesaver="26.0.4"
@@ -168,15 +169,19 @@ build_lib_for_android(){
 	echo "Creating meson cross file ..." $'\n'
 	if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
 		ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
+		ndk_sys="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
 	else	
 		ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
+		ndk_sys="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
 	fi
-
+	
+    [ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
+	
 	cat <<EOF >"android-aarch64"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
+c = ['ccache', '$ndk/aarch64-linux-android$cver-clang', '--sysroot=$ndk_sys']
+cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments', '--sysroot=$ndk_sys']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/llvm-strip'
@@ -198,6 +203,9 @@ EOF
 		-Degl=disabled \
         -Dgallium-drivers= \
 		-Dfreedreno-kmds=kgsl \
+		-Ddefault_library=shared \
+        -Dzstd=disabled \
+		-Dwerror=false \
 		-Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
@@ -208,10 +216,8 @@ port_lib_for_adrenotool(){
 	echo "Using patchelf to match soname ..."  $'\n'
 	cp "$workdir"/"$mesadir"/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
 	cd "$workdir"
-	patchelf --set-soname vulkan.adreno.so libvulkan_freedreno.so
-	mv libvulkan_freedreno.so vulkan.adreno.so
 
-	if ! [ -a vulkan.adreno.so ]; then
+	if ! [ -a libvulkan_freedreno.so ]; then
 		echo -e "$red Build failed! $nocolor" && exit 1
 	fi
 
@@ -233,14 +239,14 @@ port_lib_for_adrenotool(){
   "packageVersion": "1",
   "vendor": "Mesa",
   "driverVersion": "vk$vulkan_version",
-  "minApi": 30,
-  "libraryName": "vulkan.adreno.so"
+  "minApi": 28,
+  "libraryName": "libvulkan_freedreno.so"
 }
 EOF
 
 	filename=Turnip_$mesaver
 	echo "Copy necessary files from work directory ..." $'\n'
-	cp "$workdir"/vulkan.adreno.so "$packagedir"
+	cp "$workdir"/libvulkan_freedreno.so "$packagedir"
 
 	echo "Packing files in to adrenotool package ..." $'\n'
 	zip -9 "$workdir"/"$filename$suffix".zip ./*
