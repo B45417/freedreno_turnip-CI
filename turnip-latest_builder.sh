@@ -101,6 +101,12 @@ prepare_workdir(){
 		echo "Cloning mesa ..." $'\n'
 		git clone --depth=1 "$mesasrc"
 
+		mkdir -p subprojects && cd subprojects
+    	rm -rf spirv-tools spirv-headers
+    	git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
+    	git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
+    	cd ..
+
 		cd mesa
 		commit_short=$(git rev-parse --short HEAD)
 		commit=$(git rev-parse HEAD)
@@ -207,7 +213,10 @@ EOF
   		-Dfreedreno-kmds=kgsl \
 		-Ddefault_library=shared \
         -Dzstd=disabled \
-        -Dstrip=true &> "$workdir"/meson_log
+		-Dwerror=false \
+		-Dstrip=true \
+        --force-fallback-for=spirv-tools,spirv-headers &> "$workdir"/meson_log
+        
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
