@@ -9,8 +9,7 @@ packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
-#mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
-mesasrc="https://github.com/whitebelyash/mesa-tu8.git"
+mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
 base_patches=(
@@ -101,23 +100,8 @@ prepare_workdir(){
 		fi
 		
 		echo "Cloning mesa ..." $'\n'
-		git clone --depth=100 -b "gen8" "$mesasrc" "$workdir/mesa"
+		git clone --depth=100 "$mesasrc" "$workdir/mesa"
 		cd mesa
-
-		awk '/max_draw_states/ { if (++count > 1) next } 1' src/freedreno/common/freedreno_dev_info.h > temp_dev_info && mv temp_dev_info src/freedreno/common/freedreno_dev_info.h
-    
-    	# REMOVENDO A PASTA .GIT PARA LIMPAR O DXVK HUD
-    	rm -rf .git
-    
-    	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
-    	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
-    	sed -i 's/native_buffer->handle->/((const native_handle_t \*)native_buffer->handle)->/g' src/vulkan/runtime/vk_android.c || true
-		mkdir -p subprojects && cd subprojects
-    	rm -rf spirv-tools spirv-headers
-    	git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
-    	git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
-    	cd ..
-
 		commit_short=$(git rev-parse --short HEAD)
 		commit=$(git rev-parse HEAD)
 		mesa_version=$(cat VERSION | xargs)
@@ -225,8 +209,7 @@ EOF
 		-Ddefault_library=shared \
         -Dzstd=disabled \
 		-Dwerror=false \
-		-Dstrip=true \
-        --force-fallback-for=spirv-tools,spirv-headers &> "$workdir"/meson_log
+		-Dstrip=true &> "$workdir"/meson_log
         
 
 	echo "Compiling build files ..." $'\n'
@@ -237,10 +220,8 @@ port_lib_for_adrenotool(){
 	echo "Using patchelf to match soname ..."  $'\n'
 	cp "$workdir"/mesa/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
 	cd "$workdir"
-	patchelf --set-soname vulkan.adreno.so libvulkan_freedreno.so
-	mv libvulkan_freedreno.so vulkan.adreno.so
 
-	#if ! [ -a vulkan.adreno.so ]; then
+	#if ! [ -a libvulkan_freedreno.so ]; then
 	#	echo -e "$red Build failed! $nocolor" && exit 1
 	#fi
 
@@ -263,13 +244,13 @@ port_lib_for_adrenotool(){
   "vendor": "Mesa",
   "driverVersion": "$mesa_version/vk$vulkan_version",
   "minApi": 28,
-  "libraryName": "vulkan.adreno.so"
+  "libraryName": "libvulkan_freedreno.so"
 }
 EOF
 
 	filename=turnip_"$(date +'%b-%d-%Y')"_"$commit_short"
 	echo "Copy necessary files from work directory ..." $'\n'
-	cp "$workdir"/vulkan.adreno.so "$packagedir"
+	cp "$workdir"/libvulkan_freedreno.so "$packagedir"
 
 	echo "Packing files in to adrenotool package ..." $'\n'
 	zip -9 "$workdir"/"$filename$suffix".zip ./*
