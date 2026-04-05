@@ -100,7 +100,8 @@ prepare_workdir(){
 		fi
 		
 		echo "Cloning mesa ..." $'\n'
-		git clone --depth=1 "$mesasrc"
+		git clone --depth=100 "$mesasrc"
+		cd mesa
 
 		awk '/max_draw_states/ { if (++count > 1) next } 1' src/freedreno/common/freedreno_dev_info.h > temp_dev_info && mv temp_dev_info src/freedreno/common/freedreno_dev_info.h
     
@@ -116,7 +117,6 @@ prepare_workdir(){
     	git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
     	cd ..
 
-		cd mesa
 		commit_short=$(git rev-parse --short HEAD)
 		commit=$(git rev-parse HEAD)
 		mesa_version=$(cat VERSION | xargs)
