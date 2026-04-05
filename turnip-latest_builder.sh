@@ -101,7 +101,7 @@ prepare_workdir(){
 		fi
 		
 		echo "Cloning mesa ..." $'\n'
-		git clone --depth=100 -b "gen8" "$mesasrc"
+		git clone --depth=100 -b "gen8" "$mesasrc" "$workdir/mesa"
 		cd mesa
 
 		awk '/max_draw_states/ { if (++count > 1) next } 1' src/freedreno/common/freedreno_dev_info.h > temp_dev_info && mv temp_dev_info src/freedreno/common/freedreno_dev_info.h
