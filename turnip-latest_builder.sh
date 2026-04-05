@@ -6,8 +6,8 @@ nocolor='\033[0m'
 deps="meson ninja patchelf unzip curl pip flex bison zip git"
 workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
-ndkver="android-ndk-r28"
-sdkver="30"
+ndkver="android-ndk-r29"
+sdkver="36"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 #array of string => commit/branch;patch args
@@ -197,10 +197,14 @@ EOF
        	-Dandroid-stub=true \
 		-Dandroid-libbacktrace=disabled \
 		-Degl=disabled \
+		-Dglx=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
   	 	-Dvulkan-beta=true \
   		-Dfreedreno-kmds=kgsl \
+		-Ddefault_library=shared \
+        -Dzstd=disabled \
+        -Dwerror=false \
         -Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
