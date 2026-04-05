@@ -9,7 +9,8 @@ packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
-mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
+#mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
+mesasrc="https://github.com/whitebelyash/mesa-tu8.git"
 
 #array of string => commit/branch;patch args
 base_patches=(
@@ -100,7 +101,7 @@ prepare_workdir(){
 		fi
 		
 		echo "Cloning mesa ..." $'\n'
-		git clone --depth=100 "$mesasrc"
+		git clone --depth=100 -b "gen8" "$mesasrc"
 		cd mesa
 
 		awk '/max_draw_states/ { if (++count > 1) next } 1' src/freedreno/common/freedreno_dev_info.h > temp_dev_info && mv temp_dev_info src/freedreno/common/freedreno_dev_info.h
