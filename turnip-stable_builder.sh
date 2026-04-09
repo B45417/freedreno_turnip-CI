@@ -1,4 +1,4 @@
-#!/bin/bash -e
+.#!/bin/bash -e
 green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
@@ -9,9 +9,9 @@ packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
-mesasrc="https://archive.mesa3d.org/mesa-25.2.8.tar.xz"
-mesadir="mesa-25.2.8"
-mesaver="25.2.8"
+mesasrc="https://archive.mesa3d.org/mesa-25.3.6.tar.xz"
+mesadir="mesa-25.3.6"
+mesaver="25.3.6"
 
 #array of string => commit/branch;patch args
 base_patches=(
