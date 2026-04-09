@@ -203,7 +203,6 @@ EOF
 		-Degl=disabled \
         -Dgallium-drivers= \
 		-Dfreedreno-kmds=kgsl \
-		-Ddefault_library=shared \
 		-Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
