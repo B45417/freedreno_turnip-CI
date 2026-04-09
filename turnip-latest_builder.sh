@@ -206,8 +206,6 @@ EOF
   	 	-Dvulkan-beta=true \
   		-Dfreedreno-kmds=kgsl \
 		-Ddefault_library=shared \
-        -Dzstd=disabled \
-		-Dwerror=false \
 		-Dstrip=true &> "$workdir"/meson_log
         
 
