@@ -1,5 +1,7 @@
 This is a bash script to build freedreno/turnip for android as an adrenotool package.
 
+*9 Apr 2026 - Re-enabled zstd cache compression.
+
 *5 Apr 2026 - All releases rebuilt without patchelf, which blocked additional vulkan extensions from being read - limiting the available extensions to whatever the system originally had. 
 
 *5 Feb 2026 - All releases rebuilt without LTO, which was causing random untrackable bugs. Beta vulkan features removed from stable releases.
