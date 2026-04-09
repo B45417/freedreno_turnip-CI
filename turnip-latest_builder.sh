@@ -205,7 +205,6 @@ EOF
   		-Dvulkan-drivers=freedreno \
   	 	-Dvulkan-beta=true \
   		-Dfreedreno-kmds=kgsl \
-		-Ddefault_library=shared \
 		-Dstrip=true &> "$workdir"/meson_log
         
 
