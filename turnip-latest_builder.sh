@@ -199,7 +199,6 @@ EOF
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
        	-Dandroid-stub=true \
-		-Dandroid-shim=true \
 		-Dandroid-libbacktrace=disabled \
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
