@@ -1,4 +1,4 @@
-o#!/bin/bash -e
+.#!/bin/bash -e
 green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
@@ -10,6 +10,7 @@ ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
+driver="libvulkan_freedreno.so"
 
 #array of string => commit/branch;patch args
 base_patches=(
@@ -211,10 +212,10 @@ EOF
 }
 
 port_lib_for_adrenotool(){
-	cp "$workdir"/mesa/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
+	cp "$workdir"/mesa/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"/"$driver"
 	cd "$workdir"
 
-	#if ! [ -a libvulkan_freedreno.so ]; then
+	#if ! [ -a "$driver" ]; then
 	#	echo -e "$red Build failed! $nocolor" && exit 1
 	#fi
 
@@ -237,13 +238,13 @@ port_lib_for_adrenotool(){
   "vendor": "Mesa",
   "driverVersion": "$mesa_version/vk$vulkan_version",
   "minApi": 28,
-  "libraryName": "libvulkan_freedreno.so"
+  "libraryName": "$driver"
 }
 EOF
 
 	filename=turnip_"$(date +'%b-%d-%Y')"_"$commit_short"
 	echo "Copy necessary files from work directory ..." $'\n'
-	cp "$workdir"/libvulkan_freedreno.so "$packagedir"
+	cp "$workdir"/"$driver" "$packagedir"
 
 	echo "Packing files in to adrenotool package ..." $'\n'
 	zip -9 "$workdir"/"$filename$suffix".zip ./*
