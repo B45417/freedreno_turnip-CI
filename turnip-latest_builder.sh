@@ -10,7 +10,7 @@ ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
-driver="vulkan.ad07xx.so"
+driver="vulkan.adreno.so"
 
 #array of string => commit/branch;patch args
 base_patches=(
