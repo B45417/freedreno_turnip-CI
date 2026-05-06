@@ -1,4 +1,4 @@
-.#!/bin/bash -e
+#!/bin/bash -e
 green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
@@ -202,8 +202,7 @@ EOF
 		-Dvulkan-drivers=freedreno \
 		-Degl=disabled \
         -Dgallium-drivers= \
-		-Dfreedreno-kmds=kgsl \
-		-Dstrip=true &> "$workdir"/meson_log
+		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
