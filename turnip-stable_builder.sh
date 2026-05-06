@@ -9,9 +9,9 @@ packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
-mesasrc="https://archive.mesa3d.org/mesa-26.0.6.tar.xz"
-mesadir="mesa-26.0.6"
-mesaver="26.0.6"
+mesasrc="https://archive.mesa3d.org/mesa-26.1.0.tar.xz"
+mesadir="mesa-26.1.0"
+mesaver="26.1.0"
 
 #array of string => commit/branch;patch args
 base_patches=(
