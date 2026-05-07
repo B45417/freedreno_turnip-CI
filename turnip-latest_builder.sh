@@ -20,6 +20,7 @@ base_patches=(
 		"vk_barrier;merge_requests/38956;"
 		"wsi_immediate;merge_requests/40584;"
 		"tu_ucmmry;merge_requests/41323;"
+		"tu_a6xxubwc;merge_requests/39491;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
