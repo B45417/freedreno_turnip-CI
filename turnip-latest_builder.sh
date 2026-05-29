@@ -25,9 +25,6 @@ base_patches=(
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-        "tu_fragfc7xx;merge_requests/41848;"
-		"tu_dirtyds;merge_requests/41855;"
-		"tu_occlusion;merge_requests/41856;"
 		"tu_fsoptim;merge_requests/41848;"
         #"copy_raw;merge_requests/35610;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
