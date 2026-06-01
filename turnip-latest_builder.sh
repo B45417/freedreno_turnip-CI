@@ -24,7 +24,7 @@ base_patches=(
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
-		"vk_antilag;merge_requests/41727;"
+		"protoDXVK2.5+compat;merge_requests/39751;"
         #"copy_raw;merge_requests/35610;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
