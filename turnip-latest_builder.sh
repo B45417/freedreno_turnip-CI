@@ -21,7 +21,6 @@ base_patches=(
 		"wsi_immediate;merge_requests/40584;"
 		"wsi_fix;merge_requests/41188;"
 		"wsi_buffers;merge_requests/36266;"
-		"tu_debug;merge_requests/41878;--reverse"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
