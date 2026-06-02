@@ -185,7 +185,7 @@ build_lib_for_android(){
 [binaries]
 ar = '$ndk/llvm-ar'
 c = ['ccache', '$ndk/aarch64-linux-android$cver-clang', '--sysroot=$ndk_sys']
-cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments', '--sysroot=$ndk_sys']
+cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '--end-no-unused-arguments', '--sysroot=$ndk_sys']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/llvm-strip'
@@ -206,7 +206,8 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
-  	 	-Dvulkan-beta=true &> "$workdir"/meson_log
+  	 	-Dvulkan-beta=true \
+		-Dstrip=true &> "$workdir"/meson_log
         
 
 	echo "Compiling build files ..." $'\n'
