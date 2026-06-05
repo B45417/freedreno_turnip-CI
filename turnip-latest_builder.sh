@@ -18,7 +18,7 @@ base_patches=(
 		"wsi_syncobj;merge_requests/31149;"
 		"tu_direct;merge_requests/38960;"
 		"vk_barrier;merge_requests/38956;"
-		"wsi_immediate;merge_requests/40584;"
+		"wsi_fix;merge_requests/36266;"
 		"tu_matchSWHWclears;merge_requests/41972;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
