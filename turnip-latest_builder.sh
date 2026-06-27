@@ -14,12 +14,12 @@ driver="vulkan.turnip.so"
 
 #array of string => commit/branch;patch args
 base_patches=(
-        "postbvh;merge_requests/40692;--reverse"
-        "bvh;merge_requests/42233;--reverse"
+        #"postbvh;merge_requests/40692;--reverse"
+        #"bvh;merge_requests/42233;--reverse"
 		"vk;merge_requests/38323;"
 		"wsi_syncobj;merge_requests/31149;"
-		"tu_direct;merge_requests/38960;"
-		"vk_barrier;merge_requests/38956;"
+		#"tu_direct;merge_requests/38960;"
+		#"vk_barrier;merge_requests/38956;"
 		"kgsl_fix;merge_requests/42498;"
 		#"wsi_fix;merge_requests/36266;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
