@@ -20,6 +20,7 @@ base_patches=(
 		#"vk_barrier;merge_requests/38956;"
 		"a613+kgsl_fix;merge_requests/42498;"
 		"tu_compr;merge_requests/42489;"
+		"vk_linear;merge_requests/42444;--reverse"
 		#"autotune_fix;merge_requests/42553;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
