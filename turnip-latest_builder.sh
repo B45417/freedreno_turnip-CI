@@ -170,10 +170,8 @@ build_lib_for_android(){
 	echo "Creating meson cross file ..." $'\n'
 	if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
 		ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
-		ndk_sys="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
 	else	
 		ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
-		ndk_sys="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
 	fi
 	
     [ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
@@ -181,8 +179,8 @@ build_lib_for_android(){
 	cat <<EOF >"android-aarch64"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android$cver-clang', '--sysroot=$ndk_sys']
-cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments', '--sysroot=$ndk_sys']
+c = ['ccache', '$ndk/aarch64-linux-android$cver-clang']
+cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/llvm-strip'
