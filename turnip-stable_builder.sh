@@ -9,7 +9,7 @@ packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
-mesaver="26.0.8"
+mesaver="25.3.6"
 mesadir="mesa-$mesaver"
 mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
 
