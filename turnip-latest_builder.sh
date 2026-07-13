@@ -16,6 +16,7 @@ driver="vulkan.turnip.so"
 base_patches=(
 		"vk;merge_requests/38323;"
 		"tu_compr;merge_requests/42489;"
+		"tu_vk_ext;merge_requests/42857;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
