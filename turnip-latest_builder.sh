@@ -17,7 +17,6 @@ base_patches=(
 		"vk;merge_requests/38323;"
 		"tu_rrg;merge_requests/43018;"
 		"tu_compress;merge_requests/42489;"
-		"tu_kgsl;merge_requests/43136;"
 		"tu_blit;merge_requests/43190;"
 		"tu_gfx;merge_requests/43189;"
 		"tu_lrz;merge_requests/43187;"
