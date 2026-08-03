@@ -18,8 +18,8 @@ base_patches=(
 		"tu_compress;merge_requests/42489;"
 		"tu_rndrinput;merge_requests/43165;"
 		"tu_sync;merge_requests/43272;"
-		#"tu_lrz;merge_requests/43271;"
-		#"tu_lrz;merge_requests/43364;"
+		"tu_lrz;merge_requests/43271;"
+		"tu_lrz;merge_requests/43364;"
 		"tu_mlimages;merge_requests/43393;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
