@@ -21,6 +21,8 @@ base_patches=(
 		"tu_lrzdir;merge_requests/43540;"
 		"tu_lrzatdraw;merge_requests/43703;"
 		"tu_mlimages;merge_requests/43393;"
+		"tu_renderpass;merge_requests/43716;"
+		"tu_gmem;merge_requests/43714;"
         #'disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;'
 )
 experimental_patches=(
