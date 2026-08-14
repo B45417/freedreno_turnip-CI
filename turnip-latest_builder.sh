@@ -17,7 +17,6 @@ base_patches=(
 		"tu_sync;merge_requests/43272;"
 		"tu_lrzfbloops;merge_requests/43271;"
 		"tu_lrzdir;merge_requests/43540;"
-		"tu_lrzatdraw;merge_requests/43703;"
 		"tu_mlimages;merge_requests/43393;"
 		"tu_renderpass;merge_requests/43716;"
 		"tu_gmem;merge_requests/43714;"
