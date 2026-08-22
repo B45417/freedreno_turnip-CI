@@ -20,7 +20,6 @@ base_patches=(
 		"lrz;merge_requests/43873;"
 		"lrz;merge_requests/43902;"
 		#"barrier;merge_requests/43432;"
-		"kgsl_priorities;../../patches/kgsl_priorities.patch;"
         #"disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;"
 )
 experimental_patches=(
