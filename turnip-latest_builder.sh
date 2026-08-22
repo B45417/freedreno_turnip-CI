@@ -19,13 +19,12 @@ base_patches=(
 		#"subgroup;merge_requests/43866;"
 		"lrz;merge_requests/43873;"
 		"lrz;merge_requests/43902;"
-		#"barrier;merge_requests/43432;"
+		"a6xx_gmem;merge_requests/43899;"
         #"disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;"
 )
 experimental_patches=(
-		"a6xx_SWmultiview;merge_requests/43117;"
-		"a6xx_gmem;merge_requests/43899;"
-		#"protoDXVK2.5+compat;merge_requests/39751;"
+		"draft-SWmultiview;merge_requests/43117;"
+		"draft-semaphores;merge_requests/39751;"
         #"copy_raw;merge_requests/35610;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
