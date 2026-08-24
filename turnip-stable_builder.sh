@@ -12,7 +12,7 @@ cver="35"
 mesaver="26.0.0"
 mesadir="mesa-$mesaver"
 #mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
-mesasrc="https://drive.google.com/uc?export=download&id=1i21Md-vIcl30HIEIA6u9LkvOvEQTjqgS&confirm=yes"
+mesasrc="https://drive.usercontent.google.com/download?id=1i21Md-vIcl30HIEIA6u9LkvOvEQTjqgS&export=download&confirm=yes"
 #array of string => commit/branch;patch args
 base_patches=(
 )
