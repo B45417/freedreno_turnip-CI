@@ -201,6 +201,7 @@ EOF
 		-Degl=disabled \
         -Dgallium-drivers= \
 		-Dvulkan-drivers=freedreno \
+		-Dvulkan-beta=true \
 		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
