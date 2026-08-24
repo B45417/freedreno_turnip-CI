@@ -9,10 +9,10 @@ packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="36"
 cver="35"
-mesaver="26.0.0"
+mesaver="26.2.2"
 mesadir="mesa-$mesaver"
-#mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
-mesasrc="https://drive.usercontent.google.com/download?id=1i21Md-vIcl30HIEIA6u9LkvOvEQTjqgS&export=download&confirm=yes"
+mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
+#mesasrc="https://drive.usercontent.google.com/download?id=INSERTID&export=download&confirm=yes"
 #array of string => commit/branch;patch args
 base_patches=(
 )
@@ -96,8 +96,8 @@ prepare_workdir(){
 		fi
 	
 		echo "Downloading mesa source ..." $'\n'
-		#curl "$mesasrc" --output mesa.tar.xz &> /dev/null
-		curl -L -o mesa.tar.xz "$mesasrc"  &> /dev/null
+		curl "$mesasrc" --output mesa.tar.xz &> /dev/null
+		#curl -L -o mesa.tar.xz "$mesasrc"  &> /dev/null
 		
 		echo "Exracting mesa source ..." $'\n'
 		tar -xf mesa.tar.xz
