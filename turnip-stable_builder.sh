@@ -11,8 +11,8 @@ sdkver="36"
 cver="35"
 mesaver="26.0.0"
 mesadir="mesa-$mesaver"
-mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
-
+#mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
+mesasrc="https://drive.google.com/uc?export=download&id=1i21Md-vIcl30HIEIA6u9LkvOvEQTjqgS&confirm=yes"
 #array of string => commit/branch;patch args
 base_patches=(
 )
@@ -96,7 +96,8 @@ prepare_workdir(){
 		fi
 	
 		echo "Downloading mesa source ..." $'\n'
-		curl "$mesasrc" --output mesa.tar.xz &> /dev/null
+		#curl "$mesasrc" --output mesa.tar.xz &> /dev/null
+		curl -L -o mesa.tar.xz "$mesasrc"  &> /dev/null
 		
 		echo "Exracting mesa source ..." $'\n'
 		tar -xf mesa.tar.xz
