@@ -15,7 +15,6 @@ driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
 		"sync;merge_requests/43272;"
-		"spirv;merge_requests/43976;"
 		"a6xxfdcache;merge_requests/41860;"
 		"a6xxfdm;merge_requests/43953;"
 		"32B;merge_requests/43970;"
