@@ -209,8 +209,10 @@ EOF
 }
 
 port_lib_for_adrenotool(){
-	cp "$workdir"/mesa/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"/"$driver"
+	cp "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
 	cd "$workdir"
+	patchelf --set-soname "$driver" libvulkan_freedreno.so
+	mv libvulkan_freedreno.so "$driver"
 
 	#if ! [ -a "$driver" ]; then
 	#	echo -e "$red Build failed! $nocolor" && exit 1
