@@ -13,6 +13,7 @@ mesaver="26.1.0"
 mesadir="mesa-$mesaver"
 mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
 #mesasrc="https://drive.usercontent.google.com/download?id=INSERTID&export=download&confirm=yes"
+driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args
 base_patches=(
 )
@@ -209,10 +210,12 @@ EOF
 }
 
 port_lib_for_adrenotool(){
-	cp "$workdir"/"$mesadir"/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
+	cp "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"
 	cd "$workdir"
+	patchelf --set-soname "$driver" libvulkan_freedreno.so
+	mv libvulkan_freedreno.so "$driver"
 
-	if ! [ -a libvulkan_freedreno.so ]; then
+	if ! [ -a "$driver" ]; then
 		echo -e "$red Build failed! $nocolor" && exit 1
 	fi
 
@@ -235,13 +238,13 @@ port_lib_for_adrenotool(){
   "vendor": "Mesa",
   "driverVersion": "vk$vulkan_version",
   "minApi": 28,
-  "libraryName": "libvulkan_freedreno.so"
+  "libraryName": "$driver"
 }
 EOF
 
 	filename=Turnip_$mesaver
 	echo "Copy necessary files from work directory ..." $'\n'
-	cp "$workdir"/libvulkan_freedreno.so "$packagedir"
+	cp "$workdir"/"$driver" "$packagedir"
 
 	echo "Packing files in to adrenotool package ..." $'\n'
 	zip -9 "$workdir"/"$filename$suffix".zip ./*
