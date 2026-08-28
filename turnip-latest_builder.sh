@@ -201,7 +201,7 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl 
+		-Dfreedreno-kmds=kgsl \
 		-Db_lto=true \
 		-Db_lto_mode=thin \
 		-Dallow-broken-lto=true \
