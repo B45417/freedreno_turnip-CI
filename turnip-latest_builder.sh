@@ -19,7 +19,7 @@ base_patches=(
 		"queries;merge_requests/44015;"
 		#"texel;merge_requests/44119;"
 		"msm;merge_requests/44043;"
-		"ram;merge_requests/44061;"
+		#"ram;merge_requests/44061;"
         #"disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;"
 )
 experimental_patches=(
