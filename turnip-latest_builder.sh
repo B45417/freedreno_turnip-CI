@@ -18,7 +18,7 @@ base_patches=(
 		"a6xxfdcache;merge_requests/41860;"
 		"queries;merge_requests/44015;"
 		"msm;merge_requests/44043;"
-		"misc;merge_requests/44152;"
+		#"misc;merge_requests/44152;"
 		#"ram;merge_requests/44153;"
         #"disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;"
 )
