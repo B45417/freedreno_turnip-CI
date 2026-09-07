@@ -15,7 +15,7 @@ driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
 		"sync;merge_requests/43272;"
-		#"a6xxfdcache;merge_requests/41860;"
+		"sysmem;merge_requests/43899;"
 		"queries;merge_requests/44015;"
         #"disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;"
 )
