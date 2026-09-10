@@ -196,7 +196,6 @@ EOF
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
        	-Dandroid-stub=true \
-		-Dandroid-libbacktrace=disabled \
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
