@@ -17,6 +17,8 @@ base_patches=(
         "multiview_a6xxgen1low;merge_requests/43117;--reverse"
 		"sysmem;merge_requests/43899;"
 		"misc;merge_requests/44552;"
+		"rastorder;merge_requests/43272;"
+		"flush;merge_requests/43714;"
         #"disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;"
 )
 experimental_patches=(
