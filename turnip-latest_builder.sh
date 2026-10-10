@@ -15,6 +15,8 @@ driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
 		"ctoc++;merge_requests/44901;"
+		"with_crb;merge_requests/45080;"
+		"cres;merge_requests/45033;"
         #"disable_VK_KHR_workgroup_memory_explicit_layout;../../patches/disable_KHR_workgroup_memory_explicit_layout.patch;"
 )
 experimental_patches=(
