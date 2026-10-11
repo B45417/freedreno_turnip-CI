@@ -1,5 +1,5 @@
 Author: Valentine Burley 
-Turnip clears sysmem depth/stencil attachments through the color
+MR43889 Turnip clears sysmem depth/stencil attachments through the color
 pipeline, bypassing the depth CCU. This causes a color CCU vs depth
 CCU aliasing issue across render passes.
 
