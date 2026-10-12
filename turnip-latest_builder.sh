@@ -17,7 +17,6 @@ base_patches=(
         "CCU;../../patches/CCU.patch;"
 		"graph_state;merge_requests/45128;"
 		"misc;merge_requests/45129;"
-		"cres;merge_requests/45033;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
