@@ -15,7 +15,6 @@ driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
         "CCU;../../patches/CCU.patch;"
-		"ctoc++;merge_requests/44901;"
 		"with_crb;merge_requests/45080;"
 		"cres;merge_requests/45033;"
 )
