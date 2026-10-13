@@ -283,7 +283,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "### Upstreams / Patches (Experimental)" >> description
-			echo "Include previously listed patches + vulkan beta extension and lto" >> description
+			echo "Include previously listed patches + vulkan beta extension and LTO" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 			echo "" >> description
