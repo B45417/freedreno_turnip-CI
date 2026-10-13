@@ -188,7 +188,7 @@ endian = 'little'
 EOF
 
     echo "Generating build files ..." $'\n'
-    if [ -z "$1" || $1 == "patched" ]; then
+    if [ -z "$1" ] || [ $1 == "patched" ]; then
 	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
    		-Dplatforms=android \
