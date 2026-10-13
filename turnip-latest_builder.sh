@@ -187,8 +187,9 @@ cpu = 'armv8'
 endian = 'little'
 EOF
 
-	echo "Generating build files ..." $'\n'
-	meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+    echo "Generating build files ..." $'\n'
+    if [ -z "$1" || $1 == "patched" ]; then
+	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
@@ -197,11 +198,28 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
+		-Dfreedreno-kmds=kgsl
+	else 
+	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+ 		-Dbuildtype=release \
+   		-Dplatforms=android \
+     	-Dplatform-sdk-version=$sdkver \
+		-Dandroid-libbacktrace=disabled \
+       	-Dandroid-stub=true \
+		-Degl=disabled \
+	 	-Dgallium-drivers= \
+  		-Dvulkan-drivers=freedreno \
+		-Dvulkan-beta=true \
+		-Dfreedreno-kmds=kgsl \
+		-Db_lto=true \
+		-Db_lto_mode=thin \
+		-Dallow-broken-lto=true \
+		-Dstrip=true
+	fi
         
 
 	echo "Compiling build files ..." $'\n'
-	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
+	ninja -C build-android-aarch64
 }
 
 port_lib_for_adrenotool(){
