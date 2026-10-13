@@ -198,7 +198,7 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl
+		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 	else 
 	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
@@ -214,12 +214,12 @@ EOF
 		-Db_lto=true \
 		-Db_lto_mode=thin \
 		-Dallow-broken-lto=true \
-		-Dstrip=true
+		-Dstrip=true &> "$workdir"/meson_log
 	fi
         
 
 	echo "Compiling build files ..." $'\n'
-	ninja -C build-android-aarch64
+	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 }
 
 port_lib_for_adrenotool(){
@@ -283,7 +283,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "### Upstreams / Patches (Experimental)" >> description
-			echo "Include previously listed patches + vulkan beta extension and LTO" >> description
+			echo "Include previously listed patches + vulkan beta extensions and LTO" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 			echo "" >> description
