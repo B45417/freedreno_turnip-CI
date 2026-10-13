@@ -192,10 +192,10 @@ EOF
     if [ -z "$1" ] || [ $1 == "patched" ]; then
 	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
-   		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
 		-Dandroid-libbacktrace=disabled \
        	-Dandroid-stub=true \
+   		-Dplatforms=android \
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
