@@ -201,7 +201,7 @@ EOF
         
 
 	echo "Compiling build files ..." $'\n'
-	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
+	meson compile -C build-android-aarch64 &> "$workdir"/ninja_log
 }
 
 port_lib_for_adrenotool(){
