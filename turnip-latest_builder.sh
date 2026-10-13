@@ -192,6 +192,7 @@ EOF
  		-Dbuildtype=release \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
+		-Dandroid-libbacktrace=disabled \
        	-Dandroid-stub=true \
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
