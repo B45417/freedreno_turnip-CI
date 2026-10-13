@@ -96,7 +96,7 @@ prepare_workdir(){
 		fi
 		
 		echo "Cloning mesa ..." $'\n'
-		git clone --depth=100 "$mesasrc" "$workdir/mesa"
+		git clone --depth=1 "$mesasrc" "$workdir/mesa"
 		cd mesa
 		commit_short=$(git rev-parse --short HEAD)
 		commit=$(git rev-parse HEAD)
@@ -201,7 +201,7 @@ EOF
         
 
 	echo "Compiling build files ..." $'\n'
-	meson compile -C build-android-aarch64 &> "$workdir"/ninja_log
+	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 }
 
 port_lib_for_adrenotool(){
