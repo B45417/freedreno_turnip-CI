@@ -8,7 +8,7 @@ workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r30"
 sdkver="36"
-cver="36"
+cver="34"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 driver="vulkan.turnip.so"
 
