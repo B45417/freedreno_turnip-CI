@@ -46,7 +46,7 @@ run_all(){
 
 prep () {
 	prepare_workdir "$1"
-	build_lib_for_android
+	build_lib_for_android "$1"
 	port_lib_for_adrenotool "$1"
 }
 
