@@ -218,11 +218,10 @@ EOF
 		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
-		-Db_lto_mode=thin \
-		-Dstrip=true &> "$workdir"/meson_log2
+		-Dstrip=true &> "$workdir"/meson_log
 
 		echo "Compiling beta build files ..." $'\n'
-		ninja -C build-android-beta &> "$workdir"/ninja_log2
+		ninja -C build-android-beta &> "$workdir"/ninja_log
 	fi
 }
 
