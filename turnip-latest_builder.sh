@@ -8,7 +8,7 @@ workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r30"
 sdkver="36"
-cver="35"
+cver="36"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 driver="vulkan.turnip.so"
 
@@ -166,13 +166,13 @@ patch_to_description() {
 
 build_lib_for_android(){
 	echo "Creating meson cross file ..." $'\n'
-	if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
+	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
 		ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	else	
-		ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	fi
+	#else	
+		#ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
+	#fi
 	
-    [ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
+    #[ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
