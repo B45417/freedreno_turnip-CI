@@ -205,7 +205,7 @@ EOF
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else 
-	    meson setup build-android-aarch64-beta --cross-file "$workdir"/mesa/android-aarch64 \
+	    meson setup build-android-beta --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
@@ -218,10 +218,10 @@ EOF
 		-Dfreedreno-kmds=kgsl \
 		-Db_lto=true \
 		-Dallow-broken-lto=true \
-		-Dstrip=true &> "$workdir"/meson_log
+		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
-		ninja -C build-android-aarch64-beta &> "$workdir"/ninja_log
+		ninja -C build-android-beta &> "$workdir"/ninja_log2
 	fi
 }
 
