@@ -24,7 +24,9 @@ jobs:
         name: Upload meson and ninja logs for debugging
         path: |
           turnip_workdir/ninja_log
+          turnip_workdir/ninja_log2
           turnip_workdir/mesa/build-android-aarch64/meson-logs/meson-log.txt
+          turnip_workdir/mesa/build-android-aarch64/meson-logs/meson-log2.txt
     
     - id: versions
       name: "Get release info"
