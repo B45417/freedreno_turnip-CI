@@ -201,8 +201,11 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
+
+		echo "Compiling build files ..." $'\n'
+		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else 
-	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+	    meson setup build-android-aarch64-beta --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
@@ -216,11 +219,10 @@ EOF
 		-Db_lto=true \
 		-Dallow-broken-lto=true \
 		-Dstrip=true &> "$workdir"/meson_log
-	fi
-        
 
-	echo "Compiling build files ..." $'\n'
-	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
+		echo "Compiling build files ..." $'\n'
+		ninja -C build-android-aarch64-beta &> "$workdir"/ninja_log
+	fi
 }
 
 port_lib_for_adrenotool(){
