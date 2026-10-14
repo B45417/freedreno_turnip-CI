@@ -6,9 +6,9 @@ nocolor='\033[0m'
 deps="meson ninja unzip curl pip flex bison zip git"
 workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
-ndkver="android-ndk-r30"
+ndkver="android-ndk-r28"
 sdkver="36"
-cver="34"
+cver="36"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
 driver="vulkan.turnip.so"
 
