@@ -205,21 +205,7 @@ EOF
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else 
-		cat <<EOF >"android-beta"
-[binaries]
-ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android$cver-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
-c_ld = '$ndk/ld.lld'
-cpp_ld = '$ndk/ld.lld'
-strip = '$ndk/llvm-strip'
-[host_machine]
-system = 'android'
-cpu_family = 'aarch64'
-cpu = 'armv8'
-endian = 'little'
-EOF
-	    meson setup build-android-beta --cross-file "$workdir"/mesa/android-beta \
+	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
@@ -235,7 +221,7 @@ EOF
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling beta build files ..." $'\n'
-		ninja -C build-android-beta &> "$workdir"/ninja_log2
+		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
 	fi
 }
 
