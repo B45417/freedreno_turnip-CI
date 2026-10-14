@@ -216,8 +216,9 @@ EOF
   		-Dvulkan-drivers=freedreno \
 		-Dvulkan-beta=true \
 		-Dfreedreno-kmds=kgsl \
-		-Db_lto=true \
 		-Dallow-broken-lto=true \
+		-Db_lto=true \
+		-Db_lto_mode=thin \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling beta build files ..." $'\n'
