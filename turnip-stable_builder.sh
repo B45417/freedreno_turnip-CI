@@ -6,9 +6,9 @@ nocolor='\033[0m'
 deps="meson ninja unzip curl pip flex bison zip git"
 workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
-ndkver="android-ndk-r29"
+ndkver="android-ndk-r28"
 sdkver="36"
-cver="35"
+cver="34"
 mesaver="26.2.4"
 mesadir="mesa-$mesaver"
 mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
@@ -78,14 +78,15 @@ prepare_workdir(){
 	echo "Creating and entering to work directory ..." $'\n'
 	mkdir -p "$workdir" && cd "$_"
 
-	if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
-		if [ ! -n "$(ls -d android-ndk*)" ]; then
+	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
+		#if [ ! -n "$(ls -d android-ndk*)" ]; then
+	if [ -z "$1" ]; then
 			echo "Downloading android-ndk from google server (~640 MB) ..." $'\n'
 			curl https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
 			###
 			echo "Exracting android-ndk to a folder ..." $'\n'
 			unzip "$ndkver"-linux.zip  &> /dev/null
-		fi
+		#fi
 	else	
 		echo "Using android ndk from github image"
 	fi
@@ -169,13 +170,13 @@ patch_to_description() {
 
 build_lib_for_android(){
 	echo "Creating meson cross file ..." $'\n'
-	if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
+	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
 		ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	else	
-		ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	fi
+	#else	
+	#	ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
+	#fi
 	
-    [ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
+    #[ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
