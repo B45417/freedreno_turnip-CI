@@ -206,12 +206,10 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else 
 	    meson setup build-android-beta --cross-file "$workdir"/mesa/android-aarch64 \
- 		-Dbuildtype=release \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
 		-Dandroid-libbacktrace=disabled \
        	-Dandroid-stub=true \
-		-Dandroid-strict=false \
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
