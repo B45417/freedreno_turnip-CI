@@ -214,7 +214,8 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
-		-Dvulkan-beta=true \
+		-Dallow-broken-lto=true \
+		-Db_lto=true \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
@@ -283,7 +284,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + vulkan beta extensions" >> description
+			echo "Includes previously listed patches + LTO" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
