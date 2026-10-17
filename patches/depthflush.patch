@@ -33,4 +33,4 @@
 +       }
         tu_emit_event_write<CHIP>(cmd, cs, FD_CACHE_INVALIDATE);
  
-       /* Wait for the flushes to land before using the 2D engine */
+        /* Wait for the flushes to land before using the 2D engine */
