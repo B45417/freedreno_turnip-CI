@@ -6,7 +6,7 @@ nocolor='\033[0m'
 deps="meson ninja unzip curl pip flex bison zip git"
 workdir="$(pwd)/turnip_workdir"
 packagedir="$workdir/turnip_module"
-ndkver="android-ndk-r29"
+ndkver="android-ndk-r28"
 sdkver="36"
 cver="34"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa.git"
@@ -216,7 +216,6 @@ EOF
 		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
-		-Db_lto_mode=thin \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
@@ -285,7 +284,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + thin LTO" >> description
+			echo "Includes previously listed patches + LTO" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
