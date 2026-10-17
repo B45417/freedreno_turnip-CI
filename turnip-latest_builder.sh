@@ -99,7 +99,7 @@ prepare_workdir(){
 		echo "Cloning mesa ..." $'\n'
 		git clone --depth=1 "$mesasrc" "$workdir/mesa"
 		cd mesa
-		log "Applying Android/NDK r29 fixes..."
+		echo "Applying Android/NDK r29 fixes..."
         sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
     	sed -i 's/, hnd->handle/, (void *)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
    		sed -i -E 's/([a-z_]+)->handle->/((const native_handle_t *)\1->handle)->/g' src/vulkan/runtime/vk_android.c || true
