@@ -1,6 +1,6 @@
 --- a/src/freedreno/vulkan/tu_cmd_buffer.cc
 +++ b/src/freedreno/vulkan/tu_cmd_buffer.cc
-@@ -1918,7 +1918,20 @@ tu6_emit_sysmem_resolves(struct tu_cmd_buffer *cmd,
+@@ -1860,7 +1860,20 @@ tu6_emit_sysmem_resolves(struct tu_cmd_buffer *cmd,
                            struct tu_cs *cs,
                            const struct tu_subpass *subpass)
   {
@@ -21,7 +21,7 @@
         /* From the documentation for vkCmdNextSubpass, section 7.4 "Render Pass
          * Commands":
          *
-@@ -1941,9 +1954,10 @@ tu6_emit_sysmem_resolves(struct tu_cmd_buffer *cmd,
+@@ -1883,9 +1897,10 @@ tu6_emit_sysmem_resolves(struct tu_cmd_buffer *cmd,
          * last sentence and the fact that we're in sysmem mode.
          */
         tu_emit_event_write<CHIP>(cmd, cs, FD_CCU_CLEAN_COLOR);
