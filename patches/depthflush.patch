@@ -1,0 +1,52 @@
+diff --git a/src/freedreno/vulkan/tu_cmd_buffer.cc b/src/freedreno/vulkan/tu_cmd_buffer.cc
+index 56ae6fde8cbe..bbd1763923a3 100644
+--- a/src/freedreno/vulkan/tu_cmd_buffer.cc
++++ b/src/freedreno/vulkan/tu_cmd_buffer.cc
+@@ -1860,31 +1860,46 @@ tu6_emit_sysmem_resolves(struct tu_cmd_buffer *cmd,
+                          struct tu_cs *cs,
+                          const struct tu_subpass *subpass)
+ {
++   /* Every slot can be UNUSED if there are no resolves. Don't pay the flushes
++    * below for an empty one.
++    */
++   bool any_resolves = false;
+    if (subpass->resolve_attachments) {
++      for (unsigned i = 0; i < subpass->resolve_count; i++) {
++         if (subpass->resolve_attachments[i].attachment !=
++             VK_ATTACHMENT_UNUSED) {
++            any_resolves = true;
++            break;
++         }
++      }
++   }
++
++   if (any_resolves) {
+       /* From the documentation for vkCmdNextSubpass, section 7.4 "Render Pass
+        * Commands":
+        *
+        *    End-of-subpass multisample resolves are treated as color
+        *    attachment writes for the purposes of synchronization.
+        *    This applies to resolve operations for both color and
+        *    depth/stencil attachments. That is, they are considered to
+        *    execute in the VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT
+        *    pipeline stage and their writes are synchronized with
+        *    VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT. Synchronization between
+        *    rendering within a subpass and any resolve operations at the end
+        *    of the subpass occurs automatically, without need for explicit
+        *    dependencies or pipeline barriers. However, if the resolve
+        *    attachment is also used in a different subpass, an explicit
+        *    dependency is needed.
+        *
+        * We use the CP_BLIT path for sysmem resolves, which is really a
+        * transfer command, so we have to manually flush similar to the gmem
+        * resolve case. However, a flush afterwards isn't needed because of the
+        * last sentence and the fact that we're in sysmem mode.
+        */
+       tu_emit_event_write<CHIP>(cmd, cs, FD_CCU_CLEAN_COLOR);
+-      if (subpass->resolve_depth_stencil)
++      if (subpass->resolve_depth_stencil){
+          tu_emit_event_write<CHIP>(cmd, cs, FD_CCU_CLEAN_DEPTH);
++	  tu_emit_event_write<CHIP>(cmd, cs, FD_CCU_INVALIDATE_DEPTH);
+-
++      }
+       tu_emit_event_write<CHIP>(cmd, cs, FD_CACHE_INVALIDATE);
