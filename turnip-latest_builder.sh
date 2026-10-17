@@ -74,7 +74,7 @@ check_deps(){
 }
 
 prepare_workdir(){
-	echo "Creating and entering to work directory ..." $'\n'
+	echo "Creating and entering work directory ..." $'\n'
 	mkdir -p "$workdir" && cd "$_"
 
 	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
@@ -217,9 +217,10 @@ EOF
 		-Dvulkan-beta=true \
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
+		-Db_lto_mode=thin \
 		-Dstrip=true &> "$workdir"/meson_log2
 
-		echo "Compiling beta build files ..." $'\n'
+		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
 	fi
 }
@@ -285,7 +286,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + vulkan beta extensions and LTO" >> description
+			echo "Includes previously listed patches + vulkan beta extensions and thin LTO" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
