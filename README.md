@@ -2,9 +2,9 @@ This is a bash script to build freedreno/turnip for android as an adrenotool pac
   
 ### To Build Locally
 - Prepare the environment :
-    sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
-    sudo apt update
-    sudo apt build-dep mesa -y
+    - sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+    - sudo apt update
+    - sudo apt build-dep mesa -y
 - Obtain the script [turnip_builder.sh](https://raw.githubusercontent.com/Weab-chan/freedreno_turnip-CI/main/turnip_builder.sh). (visit the link and use ```CTRL + S``` keys)
 - Execute script on linux terminal ```bash ./turnip_builder.sh```
 
