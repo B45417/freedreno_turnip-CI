@@ -21,7 +21,7 @@
         /* From the documentation for vkCmdNextSubpass, section 7.4 "Render Pass
          * Commands":
          *
-@@ -1941,9 +1954,10 @@ * resolve case. However, a flush afterwards isn't needed because of the
+@@ -1941,9 +1954,10 @@ tu6_emit_sysmem_resolves(struct tu_cmd_buffer *cmd,
          * last sentence and the fact that we're in sysmem mode.
          */
         tu_emit_event_write<CHIP>(cmd, cs, FD_CCU_CLEAN_COLOR);
