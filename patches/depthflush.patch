@@ -1,5 +1,5 @@
---- src/freedreno/vulkan/tu_cmd_buffer.cc
-+++ src/freedreno/vulkan/tu_cmd_buffer.cc
+--- mesa/src/freedreno/vulkan/tu_cmd_buffer.cc
++++ mesa/src/freedreno/vulkan/tu_cmd_buffer.cc
 @@ -1918,7 +1918,20 @@ tu6_emit_sysmem_resolves(struct tu_cmd_buffer *cmd,
                            struct tu_cs *cs,
                            const struct tu_subpass *subpass)
