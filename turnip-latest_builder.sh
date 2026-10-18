@@ -104,8 +104,6 @@ prepare_workdir(){
     	sed -i 's/, hnd->handle/, (void *)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
    		sed -i -E 's/([a-z_]+)->handle->/((const native_handle_t *)\1->handle)->/g' src/vulkan/runtime/vk_android.c || true
     	sed -i 's/anb->handle->/((const native_handle_t *)anb->handle)->/g' src/vulkan/runtime/vk_android.c || true
-		sed -i 's/if (subpass->resolve_depth_stencil)/if (subpass->resolve_depth_stencil){/' src/freedreno/vulkan/tu_cmd_buffer.cc || true
-        sed -i '1945a/tu_emit_event_write<CHIP>(cmd, cs, FD_CCU_INVALIDATE_DEPTH);}/' src/freedreno/vulkan/tu_cmd_buffer.cc || true
 		commit_short=$(git rev-parse --short HEAD)
 		commit=$(git rev-parse HEAD)
 		mesa_version=$(cat VERSION | xargs)
