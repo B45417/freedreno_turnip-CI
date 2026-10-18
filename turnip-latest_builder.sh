@@ -14,7 +14,7 @@ driver="vulkan.turnip.so"
 
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
-        "CCU-MR43899;../../patches/depthflush.patch;"
+        #"CCU-MR43899;../../patches/CCU.patch;"
 		"inline;merge_requests/45243;"
 )
 experimental_patches=(
@@ -104,6 +104,10 @@ prepare_workdir(){
     	sed -i 's/, hnd->handle/, (void *)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
    		sed -i -E 's/([a-z_]+)->handle->/((const native_handle_t *)\1->handle)->/g' src/vulkan/runtime/vk_android.c || true
     	sed -i 's/anb->handle->/((const native_handle_t *)anb->handle)->/g' src/vulkan/runtime/vk_android.c || true
+		sed 's/if (subpass->resolve_depth_stencil)/if (subpass->resolve_depth_stencil){' src/freedreno/vulkan/tu_cmd_buffer.cc
+        sed '1945a\
+		tu_emit_event_write<CHIP>(cmd, cs, FD_CCU_INVALIDATE_DEPTH);\
+		\\}' src/freedreno/vulkan/tu_cmd_buffer.cc
 		commit_short=$(git rev-parse --short HEAD)
 		commit=$(git rev-parse HEAD)
 		mesa_version=$(cat VERSION | xargs)
