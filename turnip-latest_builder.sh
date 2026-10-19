@@ -215,6 +215,7 @@ EOF
 	else 
 	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
+		-Db_ndebug=true \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
 		-Dandroid-libbacktrace=disabled \
@@ -225,6 +226,7 @@ EOF
 		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
+		-Db_lto_threads=8 \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
