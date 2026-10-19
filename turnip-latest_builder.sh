@@ -19,6 +19,7 @@ base_patches=(
 		"ref;merge_requests/45369;"
 		"float16;merge_requests/45366;"
 		"inline;merge_requests/45243;"
+		"texel;merge_requests/45204;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
