@@ -20,6 +20,9 @@ base_patches=(
 		"float16;merge_requests/45366;"
 		"inline;merge_requests/45243;"
 		"texel;merge_requests/45204;"
+		"hull;merge_requests/45416;"
+		"rastorder;merge_requests/43272;"
+		"flush;merge_requests/43714;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
@@ -226,7 +229,6 @@ EOF
 		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
-		-Db_lto_threads=8 \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
