@@ -216,7 +216,7 @@ EOF
 
 		#echo "Compiling build files ..." $'\n'
 		#ninja -C build-android-aarch64 &> "$workdir"/ninja_log
-	else 
+	else
 		CXXFLAGS="-Ofast" meson setup build-android-exp --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
