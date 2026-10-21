@@ -204,6 +204,7 @@ EOF
     if [ -z "$1" ] || [ $1 == "patched" ]; then
 	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
  		-Dbuildtype=release \
+		-Db_ndebug=true \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
 		-Dandroid-libbacktrace=disabled \
@@ -211,6 +212,8 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
+		-Dallow-broken-lto=true \
+		-Db_lto=true \
 		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 		echo "Compiling build files ..." $'\n'
