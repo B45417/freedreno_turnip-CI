@@ -217,7 +217,6 @@ EOF
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
-		export CXXFLAGS="-Ofast" 
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
@@ -232,10 +231,11 @@ EOF
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
 		-Db_lto_mode=thin \
+		-Dcpp_args="-march=arm-v8-a, -Ofast" \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
-		meson compile -C build-android-aarch64 &> "$workdir"/ninja_log2
+		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
 	fi
 }
 
