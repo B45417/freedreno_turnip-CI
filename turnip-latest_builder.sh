@@ -212,12 +212,14 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
+		-Db_lto=true \
+		-Db_lto_mode=thin \
 		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else 
-	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+	    CXXFLAGS="-Ofast" meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
    		-Dplatforms=android \
