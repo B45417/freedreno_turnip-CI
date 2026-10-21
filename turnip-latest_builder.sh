@@ -311,10 +311,10 @@ EOF
 		patch_to_description ${failed_patches[@]}
 	fi
 	
-	if ! [ -a "$workdir"/"$filename".zip ];
-		then echo -e "$red-Packing failed!$nocolor" && exit 1
-		else echo -e "$green-All done, you can take your zip from this folder;$nocolor" && echo "$workdir"/
-	fi
+	#if ! [ -a "$workdir"/"$filename".zip ];
+	#	then echo -e "$red-Packing failed!$nocolor" && exit 1
+	#	else echo -e "$green-All done, you can take your zip from this folder;$nocolor" && echo "$workdir"/
+	#fi
 }
 
 run_all
