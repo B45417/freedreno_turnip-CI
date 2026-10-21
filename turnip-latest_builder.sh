@@ -231,7 +231,7 @@ EOF
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
 		-Db_lto_mode=thin \
-		-Dcpp_args="-march=armv8-a, -Ofast, -fno-exceptions, -fno-rtti" \
+		-Dcpp_args="-Ofast" \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
