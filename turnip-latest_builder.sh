@@ -236,7 +236,7 @@ EOF
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
-		meson compile -C build-android-aarch64 &> "$workdir"/ninja_log2
+		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
 	fi
 }
 
