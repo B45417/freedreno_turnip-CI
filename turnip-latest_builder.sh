@@ -212,8 +212,6 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Db_lto=true \
-		-Db_lto_mode=thin \
 		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 		echo "Compiling build files ..." $'\n'
@@ -236,7 +234,7 @@ EOF
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
-		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
+		meson compile -C build-android-aarch64 &> "$workdir"/ninja_log2
 	fi
 }
 
