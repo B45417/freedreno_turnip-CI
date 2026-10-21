@@ -299,7 +299,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + thin LTO" >> description
+			echo "Includes previously listed patches + thin LTO and Ofast cpp flag" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
