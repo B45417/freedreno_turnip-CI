@@ -217,7 +217,7 @@ EOF
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else 
-	    CXXFLAGS="-Ofast" meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+	    CXXFLAGS="-O3 -ffast-math" meson setup build-android-exp --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
    		-Dplatforms=android \
@@ -234,7 +234,7 @@ EOF
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
-		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
+		ninja -C build-android-exp &> "$workdir"/ninja_log2
 	fi
 }
 
@@ -299,7 +299,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + thin LTO and Ofast cpp flag" >> description
+			echo "Includes previously listed patches + thin LTO/fastmath" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
