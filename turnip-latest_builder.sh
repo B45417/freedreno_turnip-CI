@@ -19,10 +19,7 @@ base_patches=(
 		"ref;merge_requests/45369;"
 		"float16;merge_requests/45366;"
 		"inline;merge_requests/45243;"
-		"hull;merge_requests/45416;"
 		"cubic;merge_requests/45495;"
-		"inval;merge_requests/45447;"
-		"gras;merge_requests/45421;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
