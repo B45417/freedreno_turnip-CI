@@ -15,7 +15,8 @@ driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
         "CCU-MR43899;../../patches/CCU.patch;"
-		"accel_struct;merge_requests/45548;"
+		"init;merge_requests/45548;"
+		"binding;merge_requests/45559;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
@@ -221,9 +222,7 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl \
-		-Dallow-broken-lto=true \
-		-Db_lto=true &> "$workdir"/meson_log2
+		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
@@ -291,7 +290,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + LTO and fast-math" >> description
+			echo "Includes previously listed patches + fast-math" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
