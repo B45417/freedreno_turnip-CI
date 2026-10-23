@@ -221,7 +221,7 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl 
+		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
 		-Db_lto=true \
 		-Db_lto_mode=thin &> "$workdir"/meson_log2
