@@ -212,7 +212,7 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" CXXFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+		CFLAGS="-flto=thin -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" CXXFLAGS="-flto=thin -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
    		-Dplatforms=android \
