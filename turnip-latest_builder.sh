@@ -181,7 +181,7 @@ build_lib_for_android(){
 	cat <<EOF >"android-aarch64"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android$cver-clang']
+c = ['ccache', '$ndk/aarch64-linux-android$cver-clang', '-fno-exceptions']
 cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
@@ -221,7 +221,10 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log2
+		-Dfreedreno-kmds=kgsl 
+		-Dallow-broken-lto=true \
+		-Db_lto=true \
+		-Db_lto_mode=thin &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
