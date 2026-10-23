@@ -1,4 +1,4 @@
-name: Build "turnip-latest"
+name: Build "turnip-devel"
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
         sudo apt build-dep mesa -y
     
     - name: Execute build script
-      run: bash ./turnip-latest_builder.sh
+      run: bash ./turnip-devel_builder.sh
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v7
