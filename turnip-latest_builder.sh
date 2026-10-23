@@ -223,8 +223,7 @@ EOF
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
-		-Db_lto=true \
-		-Db_lto_mode=thin &> "$workdir"/meson_log2
+		-Db_lto=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
