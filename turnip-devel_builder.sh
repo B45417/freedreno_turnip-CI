@@ -183,7 +183,7 @@ build_lib_for_android(){
 [binaries]
 ar = '$ndk/llvm-ar'
 c = ['ccache', '$ndk/aarch64-linux-android$cver-clang', '--start-no-unused-arguments', '--end-no-unused-arguments']
-cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
+cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/llvm-strip'
