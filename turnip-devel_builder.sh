@@ -213,9 +213,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=full -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" \
-		CXXFLAGS="-flto=full -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" \
-		LDFLAGS="-flto=full -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" \
+		CFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" \
+		CXXFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" \
+		LDFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range" \
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
@@ -227,7 +227,6 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
-		-Dallow-broken-lto=true \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
@@ -296,7 +295,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + LTO and fast-math" >> description
+			echo "Includes previously listed patches + fast-math" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
