@@ -213,9 +213,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range -ffp-contract=fast -ffp-model=fast -fno-semantic-interposition" \
-		CXXFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range -ffp-contract=fast -ffp-model=fast -fno-semantic-interposition" \
-		LDFLAGS="-O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range -ffp-contract=fast -ffp-model=fast -fno-semantic-interposition" \
+		CFLAGS="-flto=thin -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range -ffp-contract=fast -ffp-model=fast -fno-semantic-interposition" \
+		CXXFLAGS="-flto=thin -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range -ffp-contract=fast -ffp-model=fast -fno-semantic-interposition" \
+		LDFLAGS="-flto=thin -O3 -fno-signed-zeros -fno-trapping-math -fassociative-math -fno-math-errno -freciprocal-math -funsafe-math-optimizations -fcx-limited-range -ffp-contract=fast -ffp-model=fast -fno-semantic-interposition" \
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
@@ -296,7 +296,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + fast-math" >> description
+			echo "Includes previously listed patches + thin LTO and fast-math" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
