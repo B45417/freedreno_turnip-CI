@@ -213,9 +213,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=thin -O3 -ffast-math -fno-finite-math-only -fno-semantic-interposition" \
-		CXXFLAGS="-flto=thin -O3 -ffast-math -fno-finite-math-only -fno-semantic-interposition" \
-		LDFLAGS="-flto=thin -O3 -ffast-math -fno-finite-math-only -fno-semantic-interposition" \
+		CFLAGS="-flto=thin -O3 -ffast-math -fno-finite-math-only" \
+		CXXFLAGS="-flto=thin -O3 -ffast-math -fno-finite-math-only" \
+		LDFLAGS="-flto=thin -O3 -ffast-math -fno-finite-math-only" \
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
