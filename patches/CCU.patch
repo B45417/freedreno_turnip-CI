@@ -1,7 +1,8 @@
 Author: Valentine Burley 
 MR43889 Turnip clears sysmem depth/stencil attachments through the color
 pipeline, bypassing the depth CCU. This causes a color CCU vs depth
-CCU aliasing issue across render passes.
+CCU aliasing issue across render passes. (Fixes graphical bugs present
+since the 26.1.0 release)
 
 diff --git a/src/freedreno/vulkan/tu_clear_blit.cc b/src/freedreno/vulkan/tu_clear_blit.cc
 index 722d259e9154..0ae6df02418d 100644
