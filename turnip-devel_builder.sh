@@ -18,6 +18,7 @@ base_patches=(
 		"depth;merge_requests/43899;"
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
+		"a7xxquirk;merge_requests/45615;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
@@ -214,9 +215,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=thin -O3" \
-		CXXFLAGS="-flto=thin -O3" \
-		LDFLAGS="-flto=thin -O3" \
+		CFLAGS="-O0" \
+		CXXFLAGS="-O0" \
+		LDFLAGS="-O0" \
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
