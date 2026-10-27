@@ -18,7 +18,7 @@ base_patches=(
 		"depth;merge_requests/43899;"
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
-		"a7xxquirk;merge_requests/45615;"
+		"fdm;merge_requests/45670;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
