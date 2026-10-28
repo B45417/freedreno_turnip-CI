@@ -9,7 +9,7 @@ packagedir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 sdkver="34"
 cver="34"
-mesaver="26.2.5"
+mesaver="26.2.6"
 mesadir="mesa-$mesaver"
 mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
 #mesasrc="https://drive.usercontent.google.com/download?id=INSERTID&export=download&confirm=yes"
@@ -105,6 +105,11 @@ prepare_workdir(){
 		tar -xf mesa.tar.xz
 
 		cd $mesadir
+		echo "Applying Android/NDK r29 fixes..."
+        sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+    	sed -i 's/, hnd->handle/, (void *)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
+   		sed -i -E 's/([a-z_]+)->handle->/((const native_handle_t *)\1->handle)->/g' src/vulkan/runtime/vk_android.c || true
+    	sed -i 's/anb->handle->/((const native_handle_t *)anb->handle)->/g' src/vulkan/runtime/vk_android.c || true
 		# commit_short=$(git rev-parse --short HEAD)
 		# commit=$(git rev-parse HEAD)
 		mesa_version=$(cat VERSION | xargs)
@@ -197,6 +202,7 @@ EOF
 	meson setup build-android-aarch64 \
 		--cross-file "$workdir"/"$mesadir"/android-aarch64 \
 		-Dbuildtype=release \
+		-Db_ndebug=true \
 		-Dplatforms=android \
 		-Dplatform-sdk-version=$sdkver \
 		-Dandroid-stub=true \
@@ -204,7 +210,8 @@ EOF
 		-Degl=disabled \
         -Dgallium-drivers= \
 		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
+		-Dfreedreno-kmds=kgsl \
+		-Dstrip=true &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
