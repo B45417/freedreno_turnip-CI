@@ -180,18 +180,18 @@ build_lib_for_android(){
 	
     #[ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
 
-	mkdir -p "$workdir/bin"
-	ln -sf "$ndk/clang" "$workdir/bin/cc"
-	ln -sf "$ndk/clang++" "$workdir/bin/c++"
-	export PATH="$workdir/bin:$ndk:$PATH"
-	export CC=clang
-	export CXX=clang++
-	export AR=llvm-ar
-	export RANLIB=llvm-ranlib
-	export STRIP=llvm-strip
-	export OBJDUMP=llvm-objdump
-	export OBJCOPY=llvm-objcopy
-	export LDFLAGS="-fuse-ld=lld"
+	#mkdir -p "$workdir/bin"
+	#ln -sf "$ndk/clang" "$workdir/bin/cc"
+	#ln -sf "$ndk/clang++" "$workdir/bin/c++"
+	#export PATH="$workdir/bin:$ndk:$PATH"
+	#export CC=clang
+	#export CXX=clang++
+	#export AR=llvm-ar
+	#export RANLIB=llvm-ranlib
+	#export STRIP=llvm-strip
+	#export OBJDUMP=llvm-objdump
+	#export OBJCOPY=llvm-objcopy
+	#export LDFLAGS="-fuse-ld=lld"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
@@ -245,7 +245,7 @@ EOF
 		rm -rf build-android-aarch64
 		CFLAGS="-flto=full" \
 		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="-fuse-ld=lld -flto=full" \
+		LDFLAGS="${CFLAGS}" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
