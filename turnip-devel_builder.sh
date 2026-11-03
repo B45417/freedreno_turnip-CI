@@ -52,9 +52,6 @@ prep () {
 }
 
 check_deps(){
-	#sudo apt remove meson
-	#pip install meson PyYAML
-
 	echo "Checking system for required Dependencies ..."
 	for deps_chk in $deps;
 		do
@@ -79,15 +76,12 @@ prepare_workdir(){
 	echo "Creating and entering work directory ..." $'\n'
 	mkdir -p "$workdir" && cd "$_"
 
-	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
-		#if [ ! -n "$(ls -d android-ndk*)" ]; then
 	if [ -z "$1" ]; then
-			echo "Downloading android-ndk from google server (~640 MB) ..." $'\n'
-			curl https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
-			###
-			echo "Exracting android-ndk to a folder ..." $'\n'
-			unzip "$ndkver"-linux.zip  &> /dev/null
-		#fi
+		echo "Downloading android-ndk from google server (~640 MB) ..." $'\n'
+		curl https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
+		###
+		echo "Exracting android-ndk to a folder ..." $'\n'
+		unzip "$ndkver"-linux.zip  &> /dev/null
 	else	
 		echo "Using android ndk from github image"
 	fi
@@ -101,11 +95,13 @@ prepare_workdir(){
 		echo "Cloning mesa ..." $'\n'
 		git clone --depth=1 "$mesasrc" "$workdir/mesa"
 		cd mesa
+		
 		echo "Applying Android/NDK r29 fixes..."
         sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
     	sed -i 's/, hnd->handle/, (void *)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
    		sed -i -E 's/([a-z_]+)->handle->/((const native_handle_t *)\1->handle)->/g' src/vulkan/runtime/vk_android.c || true
     	sed -i 's/anb->handle->/((const native_handle_t *)anb->handle)->/g' src/vulkan/runtime/vk_android.c || true
+		
 		commit_short=$(git rev-parse --short HEAD)
 		commit=$(git rev-parse HEAD)
 		mesa_version=$(cat VERSION | xargs)
@@ -172,26 +168,7 @@ patch_to_description() {
 
 build_lib_for_android(){
 	echo "Creating meson cross file ..." $'\n'
-	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
-		ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	#else	
-		#ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	#fi
-	
-    #[ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
-
-	#mkdir -p "$workdir/bin"
-	#ln -sf "$ndk/clang" "$workdir/bin/cc"
-	#ln -sf "$ndk/clang++" "$workdir/bin/c++"
-	#export PATH="$workdir/bin:$ndk:$PATH"
-	#export CC=clang
-	#export CXX=clang++
-	#export AR=llvm-ar
-	#export RANLIB=llvm-ranlib
-	#export STRIP=llvm-strip
-	#export OBJDUMP=llvm-objdump
-	#export OBJCOPY=llvm-objcopy
-	#export LDFLAGS="-fuse-ld=lld"
+	ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
