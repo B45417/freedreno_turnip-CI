@@ -216,8 +216,8 @@ EOF
 	else
 		rm -rf build-android-aarch64
 		CFLAGS="-flto=full" \
-		CXXFLAGS="${CFLAGS}"
-		LDFLAGS="${CFLAGS}"
+		CXXFLAGS="${CFLAGS}" \
+		LDFLAGS="${CFLAGS}" \
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
