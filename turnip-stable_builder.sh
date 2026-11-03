@@ -36,13 +36,13 @@ run_all(){
 	check_deps
 	prep
 
-	if (( ${#base_patches[@]} )); then
-		prep "patched"
-	fi
+	#if (( ${#base_patches[@]} )); then
+	#	prep "patched"
+	#fi
  
-	if (( ${#experimental_patches[@]} )); then
-		prep "experimental"
-	fi
+	#if (( ${#experimental_patches[@]} )); then
+	#	prep "experimental"
+	#fi
 }
 
 prep () {
@@ -52,8 +52,6 @@ prep () {
 }
 
 check_deps(){
-	pip install meson PyYAML
-
 	echo "Checking system for required Dependencies ..."
 	for deps_chk in $deps;
 		do
@@ -78,15 +76,12 @@ prepare_workdir(){
 	echo "Creating and entering to work directory ..." $'\n'
 	mkdir -p "$workdir" && cd "$_"
 
-	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
-		#if [ ! -n "$(ls -d android-ndk*)" ]; then
 	if [ -z "$1" ]; then
 			echo "Downloading android-ndk from google server (~640 MB) ..." $'\n'
 			curl https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
 			###
 			echo "Exracting android-ndk to a folder ..." $'\n'
 			unzip "$ndkver"-linux.zip  &> /dev/null
-		#fi
 	else	
 		echo "Using android ndk from github image"
 	fi
@@ -99,19 +94,17 @@ prepare_workdir(){
 	
 		echo "Downloading mesa source ..." $'\n'
 		curl "$mesasrc" --output mesa.tar.xz &> /dev/null
-		#curl -L -o mesa.tar.xz "$mesasrc"  &> /dev/null
 		
 		echo "Exracting mesa source ..." $'\n'
 		tar -xf mesa.tar.xz
-
 		cd $mesadir
+		
 		echo "Applying Android/NDK r29 fixes..."
         sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
     	sed -i 's/, hnd->handle/, (void *)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
    		sed -i -E 's/([a-z_]+)->handle->/((const native_handle_t *)\1->handle)->/g' src/vulkan/runtime/vk_android.c || true
     	sed -i 's/anb->handle->/((const native_handle_t *)anb->handle)->/g' src/vulkan/runtime/vk_android.c || true
-		# commit_short=$(git rev-parse --short HEAD)
-		# commit=$(git rev-parse HEAD)
+		
 		mesa_version=$(cat VERSION | xargs)
 		version=$(awk -F'COMPLETE VK_MAKE_API_VERSION(|\n#define)' '{print $2}' <<< $(cat include/vulkan/vulkan_core.h) | xargs)
 		major=$(echo $version | cut -d "," -f 2 | xargs)
@@ -175,13 +168,7 @@ patch_to_description() {
 
 build_lib_for_android(){
 	echo "Creating meson cross file ..." $'\n'
-	#if [ -z "${ANDROID_NDK_LATEST_HOME}" ]; then
-		ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	#else	
-	#	ndk="$ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	#fi
-	
-    #[ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
+	ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
@@ -198,11 +185,25 @@ cpu = 'armv8'
 endian = 'little'
 EOF
 
+	cat <<EOF >"native"
+[build_machine]
+c = ['ccache', 'clang']
+cpp = ['ccache', 'clang++']
+ar = 'llvm-ar'
+strip = 'llvm-strip'
+c_ld = 'ld.lld'
+cpp_ld = 'ld.lld'
+system = 'linux'
+cpu_family = 'x86_64'
+cpu = 'x86_64'
+endian = 'little'
+EOF
+
 	echo "Generating build files ..." $'\n'
 	meson setup build-android-aarch64 \
 		--cross-file "$workdir"/"$mesadir"/android-aarch64 \
+		--native-file "$workdir"/"$mesadir"/native \
 		-Dbuildtype=release \
-		-Db_ndebug=true \
 		-Dplatforms=android \
 		-Dplatform-sdk-version=$sdkver \
 		-Dandroid-stub=true \
@@ -210,8 +211,7 @@ EOF
 		-Degl=disabled \
         -Dgallium-drivers= \
 		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl \
-		-Dstrip=true &> "$workdir"/meson_log
+		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 	echo "Compiling build files ..." $'\n'
 	ninja -C build-android-aarch64 &> "$workdir"/ninja_log
