@@ -53,8 +53,8 @@ prep () {
 }
 
 check_deps(){
-	sudo apt remove meson
-	pip install meson PyYAML
+	#sudo apt remove meson
+	#pip install meson PyYAML
 
 	echo "Checking system for required Dependencies ..."
 	for deps_chk in $deps;
@@ -215,7 +215,7 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=full" \
+		CFLAGS="-flto=thin" \
 		CXXFLAGS="${CFLAGS}" \
 		LDFLAGS="${CFLAGS}" \
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
