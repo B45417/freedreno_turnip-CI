@@ -41,9 +41,9 @@ run_all(){
 		prep "patched"
 	fi
  
-	#if (( ${#experimental_patches[@]} )); then
+	if (( ${#experimental_patches[@]} )); then
 		prep "experimental"
-	#fi
+	fi
 }
 
 prep () {
