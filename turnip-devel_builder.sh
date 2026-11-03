@@ -193,8 +193,6 @@ build_lib_for_android(){
 	export OBJDUMP=llvm-objdump
 	export OBJCOPY=llvm-objcopy
 	export LDFLAGS="-fuse-ld=lld"
-	export CFLAGS="-D__ANDROID__ -Wno-error -Wno-error=gnu-empty-initializer -Wno-gnu-empty-initializer -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
-    export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-error=gnu-empty-initializer -Wno-gnu-empty-initializer -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
@@ -246,6 +244,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
+		CFLAGS="-flto=full" \
+		CXXFLAGS="${CFLAGS}" \
+		LDFLAGS="-fuse-ld=lld -flto=full" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
@@ -260,8 +261,6 @@ EOF
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
-		-Db_lto=true \
-		-Db_lto_mode=thin \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
