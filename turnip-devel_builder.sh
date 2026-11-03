@@ -14,6 +14,7 @@ driver="vulkan.turnip.so"
 
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
+        "CCU-oldMR43899;../../patches/CCU.patch;"
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
 		"fdm;merge_requests/45670;"
@@ -21,7 +22,6 @@ base_patches=(
 		"infence;merge_requests/45882;"
 )
 experimental_patches=(
-        "CCU-oldMR43899;../../patches/CCU.patch;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
