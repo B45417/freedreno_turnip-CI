@@ -18,6 +18,7 @@ base_patches=(
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
 		"fdm;merge_requests/45670;"
+		"vk;merge_requests/45860;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
