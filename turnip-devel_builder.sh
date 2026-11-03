@@ -216,7 +216,6 @@ EOF
 	else
 		rm -rf build-android-aarch64
 		CFLAGS="-flto=thin -fno-semantic-interposition" \
-		CXXFLAGS="-flto=thin -fno-semantic-interposition" \
 		LDFLAGS="-flto=thin -fno-semantic-interposition" \
 		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
 		-Dbuildtype=release \
