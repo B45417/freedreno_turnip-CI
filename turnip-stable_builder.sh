@@ -12,7 +12,6 @@ cver="34"
 mesaver="26.2.6"
 mesadir="mesa-$mesaver"
 mesasrc="https://archive.mesa3d.org/$mesadir.tar.xz"
-#mesasrc="https://drive.usercontent.google.com/download?id=INSERTID&export=download&confirm=yes"
 driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args
 base_patches=(
@@ -20,8 +19,6 @@ base_patches=(
 experimental_patches=(
 )
 failed_patches=()
-commit=""
-commit_short=""
 mesa_version=""
 version=""
 major=""
@@ -261,7 +258,7 @@ EOF
 
 	if [ -z "$1" ]; then
 		echo "Turnip - $mesa_version - $date" > release
-		echo "$mesa_version"_"$commit_short" > tag
+		echo "$mesa_version" > tag
 		echo  $filename > filename
 		echo "### Stable release" > description
 		echo "false" > patched
