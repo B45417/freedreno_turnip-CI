@@ -19,6 +19,7 @@ base_patches=(
 		"binding;merge_requests/45559;"
 		"fdm;merge_requests/45670;"
 		"vk;merge_requests/45860;"
+		"infence;merge_requests/45882;"
 )
 experimental_patches=(
         #"copy_raw;merge_requests/35610;"
@@ -218,8 +219,8 @@ strip = 'llvm-strip'
 c_ld = 'ld.lld'
 cpp_ld = 'ld.lld'
 system = 'linux'
-cpu_family = 'x86_64'
-cpu = 'x86_64'
+cpu_family = 'aarch64'
+cpu = 'aarch64'
 endian = 'little'
 EOF
 
@@ -244,9 +245,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=full" \
+		CFLAGS="-flto=thin" \
 		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="-fuse-ld=lld -flto=full" \
+		LDFLAGS="-fuse-ld=lld -flto=thin" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
