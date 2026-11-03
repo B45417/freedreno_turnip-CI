@@ -15,7 +15,7 @@ driver="vulkan.turnip.so"
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
         "CCU-oldMR43899;../../patches/CCU.patch;"
-		"depth;merge_requests/43899;"
+		"depth-MR43899;../../patches/depth.patch;"
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
 		"fdm;merge_requests/45670;"
@@ -41,9 +41,9 @@ run_all(){
 		prep "patched"
 	fi
  
-	if (( ${#experimental_patches[@]} )); then
+	#if (( ${#experimental_patches[@]} )); then
 		prep "experimental"
-	fi
+	#fi
 }
 
 prep () {
