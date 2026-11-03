@@ -14,7 +14,6 @@ driver="vulkan.turnip.so"
 
 #array of string => commit/branch;patch args (ex --reverse)
 base_patches=(
-        "CCU-oldMR43899;../../patches/CCU.patch;"
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
 		"fdm;merge_requests/45670;"
@@ -22,7 +21,7 @@ base_patches=(
 		"infence;merge_requests/45882;"
 )
 experimental_patches=(
-        #"copy_raw;merge_requests/35610;"
+        "CCU-oldMR43899;../../patches/CCU.patch;"
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
 )
 failed_patches=()
@@ -245,9 +244,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=thin" \
+		CFLAGS="-flto=full" \
 		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="-fuse-ld=lld -flto=thin" \
+		LDFLAGS="-fuse-ld=lld -flto=full" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
