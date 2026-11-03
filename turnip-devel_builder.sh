@@ -19,7 +19,6 @@ base_patches=(
 		"binding;merge_requests/45559;"
 		"fdm;merge_requests/45670;"
 		"vk;merge_requests/45860;"
-		"infence;merge_requests/45882;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
