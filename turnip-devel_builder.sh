@@ -180,11 +180,26 @@ build_lib_for_android(){
 	#fi
 	
     #[ ! -f "$ndk/aarch64-linux-android${cver}-clang" ] && cver="34"
+
+	mkdir -p "$workdir/bin"
+	ln -sf "$ndk/clang" "$workdir/bin/cc"
+	ln -sf "$ndk/clang++" "$workdir/bin/c++"
+	export PATH="$workdir/bin:$ndk:$PATH"
+	export CC=clang
+	export CXX=clang++
+	export AR=llvm-ar
+	export RANLIB=llvm-ranlib
+	export STRIP=llvm-strip
+	export OBJDUMP=llvm-objdump
+	export OBJCOPY=llvm-objcopy
+	export LDFLAGS="-fuse-ld=lld"
+	export CFLAGS="-D__ANDROID__ -Wno-error -Wno-error=gnu-empty-initializer -Wno-gnu-empty-initializer -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
+    export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-error=gnu-empty-initializer -Wno-gnu-empty-initializer -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android$cver-clang', '--start-no-unused-arguments', '--end-no-unused-arguments']
+c = ['ccache', '$ndk/aarch64-linux-android$cver-clang']
 cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
@@ -196,9 +211,25 @@ cpu = 'armv8'
 endian = 'little'
 EOF
 
+	cat <<EOF >"native"
+[build_machine]
+c = ['ccache', 'clang']
+cpp = ['ccache', 'clang++']
+ar = 'llvm-ar'
+strip = 'llvm-strip'
+c_ld = 'ld.lld'
+cpp_ld = 'ld.lld'
+system = 'linux'
+cpu_family = 'x86_64'
+cpu = 'x86_64'
+endian = 'little'
+EOF
+
     echo "Generating build files ..." $'\n'
     if [ -z "$1" ] || [ $1 == "patched" ]; then
-	    meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+	    meson setup build-android-aarch64 \
+		--cross-file "$workdir"/mesa/android-aarch64 \
+		--native-file "$workdir"/mesa/native \
  		-Dbuildtype=release \
 		-Db_ndebug=true \
    		-Dplatforms=android \
@@ -215,10 +246,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=thin -fno-semantic-interposition" \
-		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="${CFLAGS}" \
-		meson setup build-android-aarch64 --cross-file "$workdir"/mesa/android-aarch64 \
+		meson setup build-android-aarch64 \
+		--cross-file "$workdir"/mesa/android-aarch64 \
+		--native-file "$workdir"/mesa/native \
 		-Dbuildtype=release \
 		-Db_ndebug=true \
    		-Dplatforms=android \
@@ -230,6 +260,8 @@ EOF
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
 		-Dallow-broken-lto=true \
+		-Db_lto=true \
+		-Db_lto_mode=thin \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
