@@ -207,7 +207,6 @@ EOF
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
  		-Dbuildtype=release \
-		-Db_ndebug=true \
    		-Dplatforms=android \
      	-Dplatform-sdk-version=$sdkver \
 		-Dandroid-libbacktrace=disabled \
@@ -215,8 +214,7 @@ EOF
 		-Degl=disabled \
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl \
-		-Dstrip=true &> "$workdir"/meson_log
+		-Dfreedreno-kmds=kgsl &> "$workdir"/meson_log
 
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
