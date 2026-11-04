@@ -18,7 +18,7 @@ base_patches=(
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
 		"vk;merge_requests/45860;"
-		"kgsl;merge_requests/45673;"
+		"vm;merge_requests/45926;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
