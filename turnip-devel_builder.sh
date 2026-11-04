@@ -17,9 +17,7 @@ base_patches=(
         "CCU-oldMR43899;../../patches/CCU.patch;"
 		"init;merge_requests/45548;"
 		"binding;merge_requests/45559;"
-		"inline;merge_requests/45243;"
 		"vk;merge_requests/45860;"
-		"gmem;merge_requests/45904;"
 		"kgsl;merge_requests/45673;"
 )
 experimental_patches=(
