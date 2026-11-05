@@ -166,6 +166,20 @@ patch_to_description() {
 build_lib_for_android(){
 	echo "Creating meson cross file ..." $'\n'
 	ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
+
+	#Workaround for using Clang as c compiler instead of GCC
+	mkdir -p "$workdir/bin"
+	ln -sf "$ndk/clang" "$workdir/bin/cc"
+	ln -sf "$ndk/clang++" "$workdir/bin/c++"
+	export PATH="$workdir/bin:$ndk:$PATH"
+	export CC=clang
+	export CXX=clang++
+	export AR=llvm-ar
+	export RANLIB=llvm-ranlib
+	export STRIP=llvm-strip
+	export OBJDUMP=llvm-objdump
+	export OBJCOPY=llvm-objcopy
+	export LDFLAGS="-fuse-ld=lld"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
