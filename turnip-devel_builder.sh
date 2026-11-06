@@ -233,9 +233,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-fno-semantic-interposition -fno-plt -flto=thin" \
+		CFLAGS="-flto=thin" \
 		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="-fuse-ld=lld -fno-semantic-interposition -fno-plt -flto=thin" \
+		LDFLAGS="-fuse-ld=lld -flto=thin" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
