@@ -202,12 +202,12 @@ EOF
 
 	cat <<EOF >"native"
 [build_machine]
-c = ['ccache', 'usr/bin/clang']
-cpp = ['ccache', 'usr/bin/clang++']
-ar = 'usr/bin/llvm-ar'
-strip = 'usr/bin/llvm-strip'
-c_ld = 'usr/bin/ld.lld'
-cpp_ld = 'usr/bin/ld.lld'
+c = ['ccache', '$ndk/clang']
+cpp = ['ccache', '$ndk/clang++']
+ar = '$ndk/llvm-ar'
+strip = '$ndk/llvm-strip'
+c_ld = '$ndk/ld.lld'
+cpp_ld = '$ndk/ld.lld'
 system = 'linux'
 cpu_family = 'x86_64'
 cpu = 'x86_64'
