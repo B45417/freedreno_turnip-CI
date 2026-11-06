@@ -172,18 +172,18 @@ build_lib_for_android(){
 	ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 	
     #Workaround for using Clang as c compiler instead of GCC
-	#mkdir -p "$workdir/bin"
-	#ln -sf "$ndk/clang" "$workdir/bin/cc"
-	#ln -sf "$ndk/clang++" "$workdir/bin/c++"
-	#export PATH="$workdir/bin:$ndk:$PATH"
-	#export CC=clang
-	#export CXX=clang++
-	#export AR=llvm-ar
-	#export RANLIB=llvm-ranlib
-	#export STRIP=llvm-strip
-	#export OBJDUMP=llvm-objdump
-	#export OBJCOPY=llvm-objcopy
-	#export LDFLAGS="-fuse-ld=lld"
+	mkdir -p "$workdir/bin"
+	ln -sf "$ndk/clang" "$workdir/bin/cc"
+	ln -sf "$ndk/clang++" "$workdir/bin/c++"
+	export PATH="$workdir/bin:$ndk:$PATH"
+	export CC=clang
+	export CXX=clang++
+	export AR=llvm-ar
+	export RANLIB=llvm-ranlib
+	export STRIP=llvm-strip
+	export OBJDUMP=llvm-objdump
+	export OBJCOPY=llvm-objcopy
+	export LDFLAGS="-fuse-ld=lld"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
@@ -202,12 +202,12 @@ EOF
 
 	cat <<EOF >"native"
 [build_machine]
-c = ['ccache', '$ndk/clang']
-cpp = ['ccache', '$ndk/clang++']
-ar = '$ndk/llvm-ar'
-strip = '$ndk/llvm-strip'
-c_ld = '$ndk/ld.lld'
-cpp_ld = '$ndk/ld.lld'
+c = ['ccache', 'clang']
+cpp = ['ccache', 'clang++']
+ar = 'llvm-ar'
+strip = 'llvm-strip'
+c_ld = 'ld.lld'
+cpp_ld = 'ld.lld'
 system = 'linux'
 cpu_family = 'x86_64'
 cpu = 'x86_64'
@@ -216,7 +216,6 @@ EOF
 
     echo "Generating build files ..." $'\n'
     if [ -z "$1" ] || [ $1 == "patched" ]; then
-	    LDFLAGS="-fuse-ld=lld" \
 	    meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
@@ -234,9 +233,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-flto=thin" \
+		CFLAGS="-fno-semantic-interposition -fipa-pta -fno-plt -flto=thin" \
 		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="-fuse-ld=lld -flto=thin" \
+		LDFLAGS="-fuse-ld=lld -fno-semantic-interposition -fipa-pta -fno-plt -flto=thin" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
