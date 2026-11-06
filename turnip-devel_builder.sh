@@ -172,26 +172,26 @@ build_lib_for_android(){
 	ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 	
     #Workaround for using Clang as c compiler instead of GCC
-	mkdir -p "$workdir/bin"
-	ln -sf "$ndk/clang" "$workdir/bin/cc"
-	ln -sf "$ndk/clang++" "$workdir/bin/c++"
-	export PATH="$workdir/bin:$ndk:$PATH"
-	export CC=clang
-	export CXX=clang++
-	export AR=llvm-ar
-	export RANLIB=llvm-ranlib
-	export STRIP=llvm-strip
-	export OBJDUMP=llvm-objdump
-	export OBJCOPY=llvm-objcopy
-	export LDFLAGS="-fuse-ld=lld"
+	#mkdir -p "$workdir/bin"
+	#ln -sf "$ndk/clang" "$workdir/bin/cc"
+	#ln -sf "$ndk/clang++" "$workdir/bin/c++"
+	#export PATH="$workdir/bin:$ndk:$PATH"
+	#export CC=clang
+	#export CXX=clang++
+	#export AR=llvm-ar
+	#export RANLIB=llvm-ranlib
+	#export STRIP=llvm-strip
+	#export OBJDUMP=llvm-objdump
+	#export OBJCOPY=llvm-objcopy
+	#export LDFLAGS="-fuse-ld=lld"
 	
 	cat <<EOF >"android-aarch64"
 [binaries]
 ar = '$ndk/llvm-ar'
 c = ['ccache', '$ndk/aarch64-linux-android$cver-clang']
 cpp = ['ccache', '$ndk/aarch64-linux-android$cver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
-c_ld = '$ndk/ld.lld'
-cpp_ld = '$ndk/ld.lld'
+c_ld = '$ndk/lld'
+cpp_ld = '$ndk/lld'
 strip = '$ndk/llvm-strip'
 [host_machine]
 system = 'android'
@@ -202,12 +202,12 @@ EOF
 
 	cat <<EOF >"native"
 [build_machine]
-c = ['ccache', 'clang']
-cpp = ['ccache', 'clang++']
-ar = 'llvm-ar'
-strip = 'llvm-strip'
-c_ld = 'ld.lld'
-cpp_ld = 'ld.lld'
+c = ['ccache', 'usr/bin/clang']
+cpp = ['ccache', 'usr/bin/clang++']
+ar = 'usr/bin/llvm-ar'
+strip = 'usr/bin/llvm-strip'
+c_ld = 'usr/bin/lld'
+cpp_ld = 'usr/bin/lld'
 system = 'linux'
 cpu_family = 'x86_64'
 cpu = 'x86_64'
@@ -216,6 +216,9 @@ EOF
 
     echo "Generating build files ..." $'\n'
     if [ -z "$1" ] || [ $1 == "patched" ]; then
+	    CFLAGS="-fuse-ld=lld" \
+		CXXFLAGS="${CFLAGS}" \
+		LDFLAGS="${CFLAGS}" \
 	    meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
