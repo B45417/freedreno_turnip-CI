@@ -216,9 +216,7 @@ EOF
 
     echo "Generating build files ..." $'\n'
     if [ -z "$1" ] || [ $1 == "patched" ]; then
-	    CFLAGS="-fuse-ld=lld" \
-		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="${CFLAGS}" \
+	    LDFLAGS="-fuse-ld=lld" \
 	    meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
