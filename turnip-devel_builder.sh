@@ -21,7 +21,7 @@ base_patches=(
 		"wfi;merge_requests/45937;"
 		"flush;merge_requests/45985;"
 		"inline;merge_requests/45243;"
-		#"occlusion;merge_requests/45904;"
+		"a740reg;merge_requests/46051;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
