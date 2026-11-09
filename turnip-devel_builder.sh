@@ -234,9 +234,6 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-Oz -flto=thin" \
-		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="-fuse-ld=lld -Oz -flto=thin" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
@@ -250,7 +247,7 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
-		-Dallow-broken-lto=true \
+		-Dvulkan-beta=true \
 		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
@@ -319,7 +316,7 @@ EOF
 			echo "_If a patch is not present anymore, it's most likely because it got merged, is not needed anymore or was breaking something._" >> description
 		else 
 			echo "#### Experimental" >> description
-			echo "Includes previously listed patches + thin LTO" >> description
+			echo "Includes previously listed patches + beta vulkan extensions" >> description
 			patch_to_description ${experimental_patches[@]}
 			echo "true" > experimental
 		fi
