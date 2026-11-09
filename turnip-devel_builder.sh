@@ -20,6 +20,7 @@ base_patches=(
 		"vm;merge_requests/45926;"
 		"wfi;merge_requests/45937;"
 		"flush;merge_requests/45985;"
+		"autotuner;merge_requests/46099;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
