@@ -18,7 +18,6 @@ base_patches=(
 		"init;merge_requests/45548;"
 		"vk;merge_requests/45860;"
 		"vm;merge_requests/45926;"
-		"wfi;merge_requests/45937;"
 		"flush;merge_requests/45985;"
 		"autotuner;merge_requests/46099;"
 )
@@ -234,9 +233,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		#CFLAGS="-Os -flto=thin" \
-		#CXXFLAGS="${CFLAGS}" \
-		#LDFLAGS="-fuse-ld=lld -Os -flto=thin" \
+		CFLAGS="-O1 -flto=thin" \
+		CXXFLAGS="${CFLAGS}" \
+		LDFLAGS="-fuse-ld=lld -O1 -flto=thin" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
@@ -249,8 +248,7 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
-		-Db_ndebug=true \
-		-Dstrip=true &> "$workdir"/meson_log2
+		-Dallow-broken-lto=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
