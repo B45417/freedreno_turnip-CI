@@ -234,9 +234,9 @@ EOF
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log
 	else
 		rm -rf build-android-aarch64
-		CFLAGS="-Oz -flto=thin" \
-		CXXFLAGS="${CFLAGS}" \
-		LDFLAGS="-fuse-ld=lld -Oz -flto=thin" \
+		#CFLAGS="-Os -flto=thin" \
+		#CXXFLAGS="${CFLAGS}" \
+		#LDFLAGS="-fuse-ld=lld -Os -flto=thin" \
 		meson setup build-android-aarch64 \
 		--cross-file "$workdir"/mesa/android-aarch64 \
 		--native-file "$workdir"/mesa/native \
@@ -249,7 +249,8 @@ EOF
 	 	-Dgallium-drivers= \
   		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
-		-Dallow-broken-lto=true &> "$workdir"/meson_log2
+		-Db_ndebug=true \
+		-Dstrip=true &> "$workdir"/meson_log2
 
 		echo "Compiling build files ..." $'\n'
 		ninja -C build-android-aarch64 &> "$workdir"/ninja_log2
