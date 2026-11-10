@@ -20,8 +20,8 @@ base_patches=(
 		"vm;merge_requests/45926;"
 		"flush;merge_requests/45985;"
 		"autotuner;merge_requests/46099;"
-		"gmem;merge_requests/45904;"
 		"kgsl;merge_requests/46114;"
+		#"gmem;merge_requests/45904;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
