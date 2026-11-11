@@ -18,7 +18,6 @@ base_patches=(
 		"init;merge_requests/45548;"
 		"vk;merge_requests/45860;"
 		"vm;merge_requests/45926;"
-		"flush;merge_requests/45985;"
 		"kgsl;merge_requests/46114;"
 		#"gmem;merge_requests/45904;"
 )
