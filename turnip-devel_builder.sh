@@ -16,7 +16,6 @@ driver="vulkan.turnip.so"
 base_patches=(
         "CCU-oldMR43899;../../patches/CCU.patch;"
 		"init;merge_requests/45548;"
-		"vk;merge_requests/45860;"
 		"ib2;merge_requests/46146;"
 		"kgsl;merge_requests/46332;"
 		"util;merge_requests/46572;"
