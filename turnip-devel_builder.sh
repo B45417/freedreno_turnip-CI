@@ -20,6 +20,7 @@ base_patches=(
 		"util;merge_requests/46572;"
 		"preload;merge_requests/46648;"
 		"occlusion;merge_requests/46637;"
+		"memory;merge_requests/46620;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
