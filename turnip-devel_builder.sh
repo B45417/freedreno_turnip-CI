@@ -18,7 +18,7 @@ base_patches=(
 		"init;merge_requests/45548;"
 		"ib2;merge_requests/46146;"
 		"util;merge_requests/46572;"
-		"wait;merge_requests/46628;"
+		"preload;merge_requests/46648;"
 		"occlusion;merge_requests/46637;"
 )
 experimental_patches=(
