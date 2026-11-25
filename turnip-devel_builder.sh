@@ -22,6 +22,7 @@ base_patches=(
 		"occlusion;merge_requests/46637;"
 		"framepace;merge_requests/46646;"
 		"descriptor;merge_requests/46648;"
+		"tess;merge_requests/46729;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
