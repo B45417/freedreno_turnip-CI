@@ -21,7 +21,6 @@ base_patches=(
 		"preload;merge_requests/46648;"
 		"occlusion;merge_requests/46637;"
 		"framepace;merge_requests/46646;"
-		"descriptor;merge_requests/46648;"
 		"tess;merge_requests/46729;"
 )
 experimental_patches=(
