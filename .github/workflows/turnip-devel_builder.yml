@@ -5,7 +5,7 @@ on:
 
 jobs:
   start_building_turnip:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
 
