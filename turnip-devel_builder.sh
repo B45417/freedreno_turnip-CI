@@ -20,7 +20,8 @@ base_patches=(
 		"util;merge_requests/46572;"
 		"tess;merge_requests/46729;"
 		"msrtss;merge_requests/46787;"
-		"ubwc;merge_requests/46796;"
+		"shader;merge_requests/46779;"
+		#"ubwc;merge_requests/46796;"
 )
 experimental_patches=(
         #"force_sysmem_no_autotuner;../../patches/force_sysmem_no_autotuner.patch;"
